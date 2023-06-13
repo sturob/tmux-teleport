@@ -6,7 +6,7 @@ FZF_VERSION=$(fzf --version | cut -d ' ' -f 1)
 FZF_VERSION_NUMBER=$(echo "$FZF_VERSION" | cut -d '.' -f 2)
 
 width=$(tput cols)
-P_WIDTH=$(echo "$width-60" | bc)
+P_WIDTH=$(echo "$width-55" | bc)
 
 BASE="$CURRENT_DIR"
 LIST_CMD="$CURRENT_DIR/list-buffered.sh"
@@ -68,15 +68,15 @@ else
 			  --nth=2.. \
 			  --ansi \
 	          --preview "$BASE/"'preview-buffered.sh {}' \
-			  --bind "ctrl-x:execute-silent($BASE/"'toggle-cut.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-p:execute-silent($BASE/"'move-window.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-g:execute($BASE/"'get-window.sh'" {})+reload(eval $LIST_CMD)" \
-			  --bind "ctrl-t:execute($BASE/"'migrate-to.sh'" {})+reload(eval $LIST_CMD)" \
+			  --bind "ctrl-x:execute-silent($BASE/"'window-cut.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-p:execute-silent($BASE/"'window-move.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-g:execute($BASE/"'window-grab.sh'" {})+reload(eval $LIST_CMD)" \
+			  --bind "ctrl-t:execute($BASE/"'window-transport.sh'" {})+reload(eval $LIST_CMD)" \
 			  --bind "ctrl-w:execute(tmux new-window -c ~ -n {q})+abort" \
-			  --bind "ctrl-a:execute-silent($BASE/"'move-pane.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-		      --bind "tab:execute-silent($BASE/"'cycle-focused-pane.sh {})+refresh-preview' \
-			  --bind "btab:execute-silent($BASE/"'mark.sh'" {})+refresh-preview" \
-			  --bind "ctrl-e:execute($BASE/"'rename.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-a:execute-silent($BASE/"'pane-move.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		      --bind "tab:execute-silent($BASE/"'pane-cycle-next.sh {})+refresh-preview' \
+			  --bind "btab:execute-silent($BASE/"'pane-mark.sh'" {})+refresh-preview" \
+			  --bind "ctrl-e:execute($BASE/"'window-rename.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-r:execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
 	          --bind "ctrl-f:refresh-preview" \
 			  --bind "esc:top+cancel" \
