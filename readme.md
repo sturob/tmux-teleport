@@ -61,7 +61,7 @@ even if you don't have a large number now, this plugin will make that an option 
 	- live updates https://sourcegraph.com/github.com/junegunn/fzf/-/blob/ADVANCED.md#log-tailing
 - some indication of pane history used/size [==== ] 8039/10k
 
-# options
+## options
 
 -	escape_exits = true
 -	use_unicode = true
@@ -69,12 +69,14 @@ even if you don't have a large number now, this plugin will make that an option 
 -	-v force vertical
 
 
-dependencies
-	- tmux
-	- fzf
-	- awk
-	- ???
+## dependencies
 
-see also
-	- https://github.com/thuanowa/tmux-fzf-session-switch
+- tmux
+- fzf
+- awk
+- ???
+
+## see also
+
+- https://github.com/thuanowa/tmux-fzf-session-switch
 
