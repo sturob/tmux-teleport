@@ -49,9 +49,10 @@ print_windows() {
 			if [ "$id" == "@$cut_window_id" ]; then
 				star="$WHITE✂ "
 				# full_background="$BLACK_BG"
-				tmp_session='     '
-				div=" "
-				message=" $WHITE✂ "
+				# tmp_session='     '
+				# div=" "
+				session_color="$BLACK"
+				message=" $WHITE✂ ✂ ✂ "
 				window_color="$GREY"
 			else
 				star=" "
