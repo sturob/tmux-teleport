@@ -6,6 +6,7 @@ GREY=$(tput setaf 8)
 
 RESET=$(tput sgr0)
 BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
 ORANGE=$(tput setaf 3)
 WHITE=$(tput setaf 15)
 
@@ -52,7 +53,7 @@ print_windows() {
 				# tmp_session='     '
 				# div=" "
 				session_color="$BLACK"
-				message=" $WHITE✂ ✂ ✂ "
+				message=" $RED✂ ✂ ✂ "
 				window_color="$GREY"
 			else
 				star=" "
