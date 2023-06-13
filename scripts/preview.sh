@@ -9,6 +9,8 @@ __help="
 ▐ ▖▌▐ ▌▌ ▌▗▚    ▐ ▖▛▀ ▐ ▛▀ ▙▄▘▌ ▌▌  ▐ ▖
  ▀ ▘▝ ▘▝▀▘▘ ▘    ▀ ▝▀▘ ▘▝▀▘▌  ▝▀ ▘   ▀ 
 
+ v0.1
+
   $BLUEFG
   DEFINITIONS
   $RESET
@@ -60,11 +62,11 @@ if [[ ! $window_id =~ ^-?[0-9]+$ ]]; then
 	exit
 fi
 
-# toilet -tf smmono9 $window_name
-
 panes=$(tmux list-panes -t "@$window_id" -F "#{pane_id} #{pane_current_command} #{pane_current_path} \
 	                                         #{pane_width} #{pane_pid} #{pane_tty} #{pane_active} \
 	                                         #{pane_title} #{pane_height} #{pane_marked}")
+									
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # default_title=$(hostname -s)
 TTY_BG="$(tput setab 16)"
@@ -92,7 +94,8 @@ while IFS= read -r pane; do
 	raw_id="${id:1}"
 	full_width=$(($w-1))
 	padded_width=$(($full_width+1))
-	path=$(echo "$path" | sed 's/\/home\/stu/~/')
+	h=$(echo $HOME | sed 's|/|\\/|g') 
+	path=$(echo "$path" | sed "s/$h/~/")
 
 	i=$((i+1)) 
 
@@ -115,7 +118,7 @@ while IFS= read -r pane; do
 
 	if [[ $pane_lines_uniq_n -lt 10 ]]; then
 		echo "$pane_contents" | uniq \
-			| ~/.bin-sturob/fzf-tmux-portal/pad.sh $full_width \
+			| $CURRENT_DIR/pad.sh $full_width \
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/$pane_border_bf│$RESET/"
 	else
@@ -123,11 +126,11 @@ while IFS= read -r pane; do
 		lines_per_half=$((-1 + (pane_lines_n + 1) / 2 ))
 
 		pane_top=$(echo "$pane_contents" | uniq | head -$lines_per_half | head -5 \
-			| ~/.bin-sturob/fzf-tmux-portal/pad.sh $full_width \
+			| $CURRENT_DIR/pad.sh $full_width \
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/│$RESET/")
 		pane_bottom=$(echo "$pane_contents" | uniq | tail -$lines_per_half | tail -5 \
-			| ~/.bin-sturob/fzf-tmux-portal/pad.sh $full_width  \
+			| $CURRENT_DIR/pad.sh $full_width \
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/│$RESET/")
 		divider_tiles=$(printf "~%.0s" $(seq 1 $(($padded_width))))
