@@ -36,13 +36,13 @@ print_windows() {
 			window_color="$WHITE"
 			session_color="$GREY"
 			soft="$GREY"
-			home_indicator="$orange"
+			home_indicator="$ORANGE"
 			div="$GREY>"
 			message=""
 			full_background=""
 			half_background=""
 			tmp_session="$session"
-			pointer=" "
+			pointer=""
 			id_color="$BLACK"
 
 			# is cut
@@ -69,10 +69,10 @@ print_windows() {
 				# style="$BOLD"
 				id_color="$ORANGE"
 				session_color="$WHITE"
-				pointer="►"
-				pointer="▉"
-				pointer="⟩"
-				pointer=" "
+				# pointer="►"
+				# pointer="▉"
+				# pointer="⟩"
+				# pointer=" "
 				# pointer="●"
 				# pointer="▶"
 			fi
@@ -85,11 +85,11 @@ print_windows() {
 
 			# is first line of each session
 			if [ "$first" -eq 1 ]; then
-				if [[ "$session_id" == "$this_session_id" ]]; then
-					session_color="$ORANGE"
-				else
-					session_color="$WHITE"
-				fi
+				# if [[ "$session_id" == "$this_session_id" ]]; then
+				# 	session_color="$ORANGE"
+				# else
+					# session_color="$WHITE"
+				# fi
 				echo # no empty lines
 			else
 				echo -n
@@ -127,3 +127,4 @@ echo
 echo "$INVISIBLE_BRAILLE =   ? help"
 echo
 echo "$INVISIBLE_BRAILLE =   $ new session"
+echo
