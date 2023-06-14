@@ -26,12 +26,12 @@ cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '
 
 print_windows() {
 	local session="$1"
-	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_name}')
+	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_index} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_name}')
 	local first=1
 	while IFS= read -r window; do
-		read -r session_id id n active last marked name <<< "$window"
+		read -r session_id id index n active last marked name <<< "$window"
 		echo -n $RESET
-		if [ "$this_window_id" != "$id" ]; then # until we support popup
+		if [  "$this_window_id" != "$id" ]; then # until we support popup
 			window_color="$WHITE"
 			session_color="$GREY"
 			soft="$GREY"
@@ -43,6 +43,7 @@ print_windows() {
 			tmp_session="$session"
 			pointer=""
 			id_color="$BLACK"
+			# id_color="$WHITE"
 
 			# is cut
 			if [ "$id" == "@$cut_window_id" ]; then
@@ -90,7 +91,7 @@ print_windows() {
 			# star="$session $this_session_id"
 			id="${id:1}"
 			printf -v id_column "$id_color%-4s" "$id"
-
+			# div="$div $index"
 			main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $marked_marker"
 
 			dashes=""
