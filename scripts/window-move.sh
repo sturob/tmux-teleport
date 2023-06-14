@@ -36,9 +36,9 @@ current_index=$(tmux display-message -p -F '#{window_index}')
 current_id=$(tmux display-message -p -F '#{window_id}')
 
 if tmux move-window -d -s "$src_id" -t $target_session:$((target_index+1)) 2>/dev/null; then
-	echo ok > $LOG
+	echo ok >> $LOG
 else
-	echo no ok > $LOG
+	echo no ok >> $LOG
 	windows=$(tmux list-windows -t "$target_session" | awk -F ':' '{print $1}' | sort -nr)
 
 	# Move the windows with the highest index to index + 1, repeat all the way to and including the target_index window
@@ -54,10 +54,10 @@ else
 	# d='-d'
 	# [[ $src_index != $current_index ]] && d='' # if current window don't use -d
 
-	# echo "$src_index  $current_index"
-	# Now move the window again
+	# now the window should move
 	tmux move-window $d -s "$src_id" -t $target_session:$((target_index+1))
 	# tmux display-message "moved $src_id -> $target_index+1"
+	echo "moved $src_id -> $target_index+1" >> $LOG
 fi
 
 tmux select-window -t "$current_id" # todo: shouldn't need this
@@ -65,4 +65,4 @@ tmux move-window -r
 
 tmux set-environment -g -r cut_window_id
 
-echo done > $LOG
+echo done >> $LOG
