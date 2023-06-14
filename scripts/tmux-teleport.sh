@@ -80,6 +80,7 @@ else
 			  --bind "ctrl-r:execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
 	          --bind "ctrl-f:refresh-preview" \
 			  --bind "esc:top+cancel" \
+			  --bind "del:clear-screen+execute($BASE/window-delete.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		  )
 fi
 
