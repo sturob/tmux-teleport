@@ -1,24 +1,20 @@
 #!/bin/bash
 
-# if [[ $1 =~ .*new$ || $1 == '' ]]; then
-# 	exit
-# fi
+LOG="/tmp/tmux-teleport.log"
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-selected_window_id=$(echo $1 | awk '{print $1}')
-# window_name=$(echo $1 | awk '{print $4}')
-# marked_window_id=$(tmux list-windows -a -F '#{window_id} #{window_marked_flag}' | awk '$2 == "1" {print $1}') # @NNN
+target_window_id_raw=$(echo $1 | awk '{print $1}')
+target_window_id="@$target_window_id_raw"
 
-# move selected window to current session
-current_session=$(tmux display-message -p '#{session_id}')
+target_session_name=$(tmux display-message -p -t "$target_window_id" '#{session_name}')
 
-# current_window=$(tmux display-message -p '#{window_id}')
+current_window_id=$(tmux list-windows -F '#{window_id} #{window_last_flag}' | awk '$2 == "1" {print $1}')
 
-this_session_id=$(tmux display-message -p '#{session_id}')
+src_window_id_raw="${current_window_id:1}"
 
-current_window=$(tmux list-windows -t "$session" -F '#{window_id} #{window_last_flag}' | awk '$2 == "1" {print $1}')
+target_index=$(tmux display-message -p -t "$target_window_id" -F '#{window_index}')
 
-# tmux display-message "$current_window -- $selected_window_id"
-# tmux move-window -d -s "@$selected_window_id" -t $current_session:
+$CURRENT_DIR/window-move.sh $src_window_id_raw $target_index $target_session_name >> $LOG
 
-tmux move-window -a -d -s "$current_window" -t "@$selected_window_id" 
-
+tmux select-window -t "$current_window_id"
+# tmux switch-client -t "$target_session_name"
