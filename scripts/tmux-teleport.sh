@@ -86,6 +86,7 @@ else
 			  --bind "del:clear-screen+execute-silent($BASE/window-delete.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 	          --bind "home:top" \
 			  --bind "end:page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down" \
+	          --bind "ctrl-/:jump" \
 		  )
 fi
 
