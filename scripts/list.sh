@@ -109,7 +109,13 @@ print_windows() {
 			# window_color="xx$window_color$HIGHLIGHT"
 
 			main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $marked_marker"
-			printf -v count_column "▪%.0s" $(seq 1 $n)
+
+			dashes=""
+			for ((i=1; i<=n; i++)); do
+				dashes+="▪"
+			done
+			count_column="$dashes"
+			# count_column="$n"
 				
 			echo "$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column  $message                                      $RESET"
 			# num2braille.sh $n
