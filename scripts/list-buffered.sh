@@ -6,7 +6,7 @@ echo "$GREY$INVISIBLE_BRAILLE =   + new window"
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# reduce flickering by buffering
+# buffering necessary to stop cursor changing position on reload
 $CURRENT_DIR/list.sh "$1" | awk 'NF==0{for(i=1;i<=j;i++) print a[i]; print ""; j=0} NF!=0{a[++j]=$0} END{for(i=1;i<=j;i++) print a[i]}'
 
 # awk 'NF==0{for(i=1;i<=j;i++) print a[i]; j=0} NF!=0{a[++j]=$0} END{for(i=1;i<=j;i++) print a[i]}'
