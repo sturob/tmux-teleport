@@ -82,6 +82,7 @@ else
 			  --bind "ctrl-r:execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
 	          --bind "ctrl-f:refresh-preview" \
 			  --bind "esc:top+cancel" \
+	          --bind "ctrl-l:clear-query+top+clear-screen" \
 			  --bind "ctrl-z:ignore" \
 			  --bind "del:clear-screen+execute($BASE/window-delete.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		  )
