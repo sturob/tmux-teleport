@@ -53,6 +53,8 @@ TMP="/tmp/tmux-teleport.tmp"
 
 # ctrl-space  not widely supported
 
+tmux set-environment -u -g cut_window_id
+
 # fixme for 1.x
 # Compare the version number to a minimum required version
 if [[ "$FZF_VERSION_NUMBER" -lt "24" ]]; then
