@@ -22,7 +22,7 @@ ORANGE_BG=$(tput setab 3)
 this_window_id=$(tmux display-message -p '#{window_id}')
 this_session_id=$(tmux display-message -p '#{session_id}')
 
-cut_window_id=$(tmux show-environment -g cut_window_id | awk -F "=" '{print $2}')
+cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '{print $2}')
 
 print_windows() {
 	local session="$1"
