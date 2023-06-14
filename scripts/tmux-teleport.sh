@@ -85,6 +85,8 @@ else
 	          --bind "ctrl-l:clear-query+top+clear-screen" \
 			  --bind "ctrl-z:ignore" \
 			  --bind "del:clear-screen+execute($BASE/window-delete.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+	          --bind "home:top" \
+			  --bind "end:page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down" \
 		  )
 fi
 
