@@ -74,7 +74,7 @@ else
 			  --bind "ctrl-p:execute-silent($BASE/"'window-move.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-g:execute($BASE/"'window-grab.sh'" {})+reload(eval $LIST_CMD)" \
 			  --bind "ctrl-t:execute($BASE/"'window-transport.sh'" {})+reload(eval $LIST_CMD)" \
-			  --bind "ctrl-w:execute(tmux new-window -c ~ -n {q})+abort" \
+			  --bind "ctrl-w:execute(tmux new-window -d -c ~ -n {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-a:execute-silent($BASE/"'pane-move.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		      --bind "tab:execute-silent($BASE/"'pane-cycle-next.sh {})+refresh-preview' \
 			  --bind "btab:execute-silent($BASE/"'pane-mark.sh'" {})+refresh-preview" \
