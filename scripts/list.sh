@@ -27,13 +27,11 @@ cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '
 print_windows() {
 	local session="$1"
 	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_name}')
-
 	local first=1
 	while IFS= read -r window; do
 		read -r session_id id n active last marked name <<< "$window"
-		
 		echo -n $RESET
-		if [ "$this_window_id" != "$id" ]; then
+		if [ "$this_window_id" != "$id" ]; then # until we support popup
 			window_color="$WHITE"
 			session_color="$GREY"
 			soft="$GREY"
@@ -49,9 +47,6 @@ print_windows() {
 			# is cut
 			if [ "$id" == "@$cut_window_id" ]; then
 				star="$WHITE✂ "
-				# full_background="$BLACK_BG"
-				# tmp_session='     '
-				# div=" "
 				session_color="$BLACK"
 				message=" $RED✂ ✂ ✂ "
 				window_color="$GREY"
@@ -62,21 +57,12 @@ print_windows() {
 			# is home
 			if [[ "$last" == '1' && "$session_id" == "$this_session_id" ]]; then
 				# star="$WHITE*"
-				# star="⌂"
-				# div="$ORANGE > "
-
+				# "⌂" "►" "▉" "⟩" " " "●" "▶"
+				div="$ORANGE>"
 				half_background="$ORANGE_BG"
 				window_color="$ORANGE"
-				# session_color="$ORANGE"
-				# style="$BOLD"
 				id_color="$ORANGE"
 				session_color="$WHITE"
-				# pointer="►"
-				# pointer="▉"
-				# pointer="⟩"
-				# pointer=" "
-				# pointer="●"
-				# pointer="▶"
 			fi
 
 			# is home (in other session)
@@ -99,14 +85,11 @@ print_windows() {
 			fi
 
 			first=0
-			marked_marker=""
-			[ "$marked" -eq 1 ] && marked_marker=" $MARKED_FG""M"
+			# marked_marker=""
+			# [ "$marked" -eq 1 ] && marked_marker=" $MARKED_FG""M"
 			# star="$session $this_session_id"
 			id="${id:1}"
 			printf -v id_column "$id_color%-4s" "$id"
-
-			# [ "$id" == "@$cut_window_id" ] &&
-			# window_color="xx$window_color$HIGHLIGHT"
 
 			main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $marked_marker"
 
@@ -115,14 +98,10 @@ print_windows() {
 				dashes+="▪"
 			done
 			count_column="$dashes"
-			# count_column="$n"
+			# count_column="$n" # TODO option
 				
 			echo "$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column  $message                                      $RESET"
 			# num2braille.sh $n
-			# printf "☐%.0s" $(seq 1 $n)
-			# printf "│%.0s" $(seq 1 $n)
-			# printf "|%.0s" $(seq 1 $n)
-			# printf "x%.0s" $(seq 1 $n)
 		fi
 	done <<< "$windows"
 }
