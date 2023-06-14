@@ -3,6 +3,8 @@
 # TODO
 # - fix renumbering tmux move-window -r or 'set -g renumber-windows off' off/on
 
+LOG="/tmp/tmux-teleport.log"
+
 target_index=$2
 
 target_session="$3"
@@ -27,16 +29,16 @@ src_id_raw=$(tmux show-environment -g cut_window_id | awk -F "=" '{print $2}')
 src_id="@$src_id_raw"
 
 
-echo " $target_id_raw $target_id $target_index $target_session $src_id " >> ~/foo
+echo " $target_id_raw $target_id $target_index $target_session $src_id " >> $LOG
 
 
 current_index=$(tmux display-message -p -F '#{window_index}')
 current_id=$(tmux display-message -p -F '#{window_id}')
 
 if tmux move-window -d -s "$src_id" -t $target_session:$((target_index+1)) 2>/dev/null; then
-	echo ok > ~/foo
+	echo ok > $LOG
 else
-	echo no ok > ~/foo
+	echo no ok > $LOG
 	windows=$(tmux list-windows -t "$target_session" | awk -F ':' '{print $1}' | sort -nr)
 
 	# Move the windows with the highest index to index + 1, repeat all the way to and including the target_index window
@@ -63,4 +65,4 @@ tmux move-window -r
 
 tmux set-environment -g -r cut_window_id
 
-echo done > ~/foo
+echo done > $LOG
