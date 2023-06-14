@@ -41,21 +41,23 @@ even if you don't have a large number now, this plugin will make that an option 
 
 
 ## next
-- fix where windows get moved to
-	- use move-window.sh always
-- preview:
+- preview
 	- dynamic height for panes
-- pluginize
-- demo
+- pane management decision
+	- selected one expands? at the top? one down?
+	- mark to paste?
+- cut right alignment
+- stop right side overflow
+- fix flickers
 
 ## future possibilities
 
-- tips for beginners when opening a new window or session
+- readd * to select current
 - settings
 - double buffer preview:  > file; cat file
 - receive http tmux events (see tmux hooks) and stay updated
-	https://github.com/junegunn/fzf/pull/3094 --listen=HTTP_PORT
-- file a fzf bugreport about slow list and cursor position moving
+	- https://github.com/junegunn/fzf/pull/3094 --listen=HTTP_PORT
+- tips for beginners when opening a new window or session
 - auto refresh? (seq 100 | fzf --query 5 --sync --bind 'start:up+up+up+reload:sleep 1; seq 1000')
 - preview: turn color back on, need to figure out how to s/$RESET/$BLACK/g
 	- live updates https://sourcegraph.com/github.com/junegunn/fzf/-/blob/ADVANCED.md#log-tailing
