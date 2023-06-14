@@ -26,11 +26,11 @@ cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '
 
 print_windows() {
 	local session="$1"
-	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_name} #{window_id} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag}')
+	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_name}')
 
 	local first=1
 	while IFS= read -r window; do
-		read -r session_id name id n active last marked <<< "$window"
+		read -r session_id id n active last marked name <<< "$window"
 		
 		echo -n $RESET
 		if [ "$this_window_id" != "$id" ]; then
