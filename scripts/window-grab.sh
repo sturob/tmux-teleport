@@ -12,5 +12,5 @@ current_window_id=$(tmux list-windows -t "$session" -F '#{window_id} #{window_la
 
 target_index=$(tmux display-message -p -t "$current_window_id" -F '#{window_index}')
 
-$CURRENT_DIR/window-move.sh $src_window_id_raw $target_index $target_session_name
+$CURRENT_DIR/window-move.sh $src_window_id_raw $target_index $target_session_name >> $LOG
 
