@@ -11,7 +11,7 @@ P_WIDTH=$(echo "$width-55" | bc)
 BASE="$CURRENT_DIR"
 LIST_CMD="$CURRENT_DIR/list-buffered.sh"
 
-TMP="~/ffs.tmp"
+TMP="/tmp/tmux-teleport.tmp"
 
 
 # totally safe ctrl keys
