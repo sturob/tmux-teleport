@@ -2,52 +2,46 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-RESET=$(tput sgr0)
-BLUEFG=$(tput setaf 4)
+source "$CURRENT_DIR/_colors.sh"
 
-__help="
-▐               ▐     ▜             ▐  
-▜▀ ▛▚▀▖▌ ▌▚▗▘▄▄▖▜▀ ▞▀▖▐ ▞▀▖▛▀▖▞▀▖▙▀▖▜▀ 
-▐ ▖▌▐ ▌▌ ▌▗▚    ▐ ▖▛▀ ▐ ▛▀ ▙▄▘▌ ▌▌  ▐ ▖
- ▀ ▘▝ ▘▝▀▘▘ ▘    ▀ ▝▀▘ ▘▝▀▘▌  ▝▀ ▘   ▀ 
 
- v0.1
-
-  $BLUEFG
-  DEFINITIONS
+__help="$GREY
+  ▐               ▐     ▜             ▐  
+  ▜▀ ▛▚▀▖▌ ▌▚▗▘▄▄▖▜▀ ▞▀▖▐ ▞▀▖▛▀▖▞▀▖▙▀▖▜▀ 
+  ▐ ▖▌▐ ▌▌ ▌▗▚    ▐ ▖▛▀ ▐ ▛▀ ▙▄▘▌ ▌▌  ▐ ▖
+   ▀ ▘▝ ▘▝▀▘▘ ▘    ▀ ▝▀▘ ▘▝▀▘▌  ▝▀ ▘   ▀ 
+        v0.1$RESET
+  $BLUE
+  KEYS
   $RESET
-  Your home window is where you launched teleporter from, it has * next to it.
+    enter       Go to $GREYLIGHT_BG""window$RESET
 
-  The highlighted window is the one you've selected on the left.
+    ctrl-x      Cut $GREYLIGHT_BG""window$RESET 
 
-  $BLUEFG
-  CORE KEY BINDINGS
-  $RESET
-  enter       Go to selected window
+    ctrl-p      Paste cut window $RED✂  $RESET (or marked pane)
 
-  ctrl-x      Cut window
+    ctrl-t      Take your $ORANGE""home window$RESET and put it next to $GREYLIGHT_BG""window$RESET
 
-  ctrl-p      Paste window
+    ctrl-g      Grab $GREYLIGHT_BG""window$RESET and pull it next to your $ORANGE""home window$RESET 
 
-  ctrl-t      Teleport your home window next to the selected window
+	delete      Delete $GREYLIGHT_BG""window$RESET
 
-  ctrl-g      Grab selected window and pull it next to your home window
+    esc         Exit
 
-  esc         Exit if no search, otherwise clear search and reset highlighted window
+    ctrl-e      Rename $GREYLIGHT_BG""window$RESET (needs tmux > 3.2)
 
-
-  $BLUEFG
-  EXTRA KEY BINDINGS
-  $RESET
-  ctrl-e    Rename highlighted window (needs tmux > 3.2)
-
-  ctrl-r    Reload list of windows
+    ctrl-r      Reload list of windows
  
-  ctrl-f    Refresh the window overview
+    ctrl-f      Refresh the list of panes
 
-  tab         Select next pane
+    tab         Select next pane
 
-  shift-tab   Select previous pane
+    shift-tab   Mark selected pane
+
+
+ $ORANGE home window$RESET = the window you were in when you launched tmux-teleport
+
+       $GREYLIGHT_BG""window$RESET = the window selected on the left
 "
 
 window_id=$(echo $1 | awk '{print $1}')
@@ -76,16 +70,9 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # default_title=$(hostname -s)
 TTY_BG="$(tput setab 16)"
-PANEID_COLOR="$(tput setaf 8)"
-PATH_COLOR="$(tput setaf 4)"
-# ACTIVE_COLOR="$(tput setaf 3)"
-MARKED_FG=$(tput setaf 5)
-WHITEFG=$(tput setaf 15)
-GREYFG=$(tput setaf 8)
-BLACKBG="$(tput setab 16)"
 
-pane_bf="$BLACKBG$GREYFG" # dynamically changed
-pane_border_bf="$BLACKBG$GREYFG" # dynamically changed
+pane_bf="$BLACK_BG$GREY" # dynamically changed
+pane_border_bf="$BLACK_BG$GREY" # dynamically changed
 
 lchar='│'
 tlchar='┌'; trchar='┐'
@@ -106,9 +93,9 @@ while IFS= read -r pane; do
 	i=$((i+1)) 
 
 	if [ $active -eq '1' ]; then
-		pane_bf="$BLACKBG$WHITEFG"
+		pane_bf="$BLACK_BG$WHITE"
 	else
-		pane_bf="$BLACKBG$GREYFG"
+		pane_bf="$BLACK_BG$GREY"
 	fi
 	pane_border_bf="$pane_bf"
 
@@ -140,7 +127,7 @@ while IFS= read -r pane; do
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/│$RESET/")
 		divider_tiles=$(printf "~%.0s" $(seq 1 $(($padded_width))))
-		pane_divider="  $pane_border_bf┆$GREYFG$divider_tiles$pane_border_bf┆"
+		pane_divider="  $pane_border_bf┆$GREY$divider_tiles$pane_border_bf┆"
 
 		echo "$pane_top
 $pane_divider
@@ -153,7 +140,7 @@ $RESET$pane_bottom"
 	echo "$brchar$RESET"
 
 	# context line
-	echo -n "    $PATH_COLOR$path$RESET "
+	echo -n "    $BLUE$path$RESET "
 	pstree -C age $pid | sed "s/^/ /" | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
 	echo
 

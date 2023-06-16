@@ -1,22 +1,9 @@
 #!/bin/bash
 
-INVISIBLE_BRAILLE="⠀"
-GREY=$(tput setaf 8)
-# echo "$GREY$INVISIBLE_BRAILLE =   + new window"
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-RESET=$(tput sgr0)
-BLACK=$(tput setaf 0)
-RED=$(tput setaf 1)
-ORANGE=$(tput setaf 3)
-WHITE=$(tput setaf 15)
+source "$CURRENT_DIR/_colors.sh"
 
-# BOLD=$(tput bold)
-# NORMAL=$(tput sgr0)
-
-HIGHLIGHT_BG=$(tput setab 8)
-MARKED_FG=$(tput setaf 5)
-BLACK_BG=$(tput setab 16)
-ORANGE_BG=$(tput setab 3)
 
 
 this_window_id=$(tmux display-message -p '#{window_id}')
