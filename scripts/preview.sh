@@ -58,6 +58,7 @@ esac
 
 
 if [[ ! $window_id =~ ^-?[0-9]+$ ]]; then
+	sleep 0.25
 	$CURRENT_DIR/center.sh
 	exit
 fi
