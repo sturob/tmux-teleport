@@ -45,6 +45,10 @@ print_windows() {
 			id_color="$BLACK"
 			# id_color="$WHITE"
 
+			if [ ! -n "$name" ]; then
+				name="$index$GREY$id"
+			fi
+
 			# is cut
 			if [ "$id" == "@$cut_window_id" ]; then
 				star="$WHITE✂ "
