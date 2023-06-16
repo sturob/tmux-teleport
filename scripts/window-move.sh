@@ -51,6 +51,6 @@ else
 	fi
 fi
 
-tmux set-environment -g -r cut_window_id
+tmux set-environment -g -u cut_window_id
 
 echo done >> $LOG
