@@ -15,7 +15,6 @@ src_index=$(tmux display-message -p -t "$src_id" -F '#{window_index}')
 current_window_index=$(tmux display-message -p -F '#{window_index}')
 current_window_id=$(tmux display-message -p -F '#{window_id}')
 
-last_window_id=$(tmux list-windows -F "#{window_id} #{window_last_flag}" | grep '1$' | cut -d' ' -f1)
 this_session=$(tmux display-message -p '#{session_name}')
 
 echo "$src_id => $target_session:$target_index  ~$this_session" >> $LOG
@@ -24,7 +23,6 @@ if [[ "$this_session" != "$target_session" ]]; then
 	# tmux bug - new-windows can be -a ppended but often move-windows cannot, so:
 	index=$(tmux new-window -n tmp -d -a -P -F '#{window_index}' -t $target_session:$target_index) # append a new one, get its index
 	tmux move-window -k -d -s "$src_id" -t $target_session:$index # overwrite new window
-# tmux move-window -r
 	# this only works when moving a window to a session you are not in, if you are in the $target_session
 	# then new-window doesn't honor the -d flag, therefore:
 else
@@ -46,8 +44,8 @@ else
 		echo XX "tmux move-window -d -s $src_id -t $target_session:$((target_index+1))" >> $LOG
 		
 		# if what
-		tmux select-window -t "$last_window_id" >> $LOG # switch to the home window
-		tmux select-window -t "$current_window_id" >> $LOG # and then back to teleport
+		# tmux select-window -t "$last_window_id" >> $LOG 
+		tmux select-window -t "$current_window_id" >> $LOG # switch to the home window
 	fi
 fi
 

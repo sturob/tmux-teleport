@@ -18,86 +18,85 @@ print_windows() {
 	while IFS= read -r window; do
 		read -r session_id id index panes_n active last marked linked_n name <<< "$window"
 		echo -n $RESET
-		if [  "$this_window_id" != "$id" ]; then # until we support popup
-			window_color="$WHITE"
-			session_color="$GREY"
-			soft="$GREY"
-			home_indicator="$ORANGE"
-			div="$GREY>"
-			message=""
-			full_background=""
-			half_background=""
-			tmp_session="$session"
-			pointer=""
-			id_color="$BLACK"
-			# id_color="$WHITE"
 
-			if [ ! -n "$name" ]; then
-				name="$index$GREY$id"
-			fi
+		window_color="$WHITE"
+		session_color="$GREY"
+		soft="$GREY"
+		home_indicator="$ORANGE"
+		div="$GREY>"
+		message=""
+		full_background=""
+		half_background=""
+		tmp_session="$session"
+		pointer=""
+		id_color="$BLACK"
+		# id_color="$WHITE"
 
-			# is cut
-			if [ "$id" == "@$cut_window_id" ]; then
-				star="$WHITE✂ "
-				session_color="$BLACK"
-				message=" $RED✂ ✂ ✂ "
-				window_color="$GREY"
-			else
-				star=" "
-			fi
-			
-			# is home
-			if [[ "$last" == '1' && "$session_id" == "$this_session_id" ]]; then
-				# star="$WHITE*"
-				# "⌂" "►" "▉" "⟩" " " "●" "▶"
-				div="$ORANGE>"
-				half_background="$ORANGE_BG"
-				window_color="$ORANGE"
-				id_color="$ORANGE"
-				session_color="$WHITE"
-			fi
-
-			# is home (in other session)
-			if [ "$active" -eq 1 ]; then
-				div="$ORANGE>"
-				# session_color="$WHITE"
-			fi
-
-			# is first line of each session
-			if [ "$first" -eq 1 ]; then
-				# if [[ "$session_id" == "$this_session_id" ]]; then
-				# 	session_color="$ORANGE"
-				# else
-					# session_color="$WHITE"
-				# fi
-				echo # no empty lines
-			else
-				echo -n
-				# session_color="$GREY"
-			fi
-
-			first=0
-			# marked_marker=""
-			# [ "$marked" -eq 1 ] && marked_marker=" $MARKED_FG""M"
-			# star="$session $this_session_id"
-			id="${id:1}"
-			printf -v id_column "$id_color%-4s" "$id"
-			# div="$div $index"
-			if [ "$linked_n" -eq 1 ]; then
-				linked_n=''
-			fi
-			main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $linked_n$marked_marker"
-
-			dashes=""
-			for ((i=1; i<=panes_n; i++)); do
-				dashes+="▪"
-			done
-			count_column="$dashes"
-			# count_column="$n" # TODO option
-				
-			echo "$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column  $message                                      $RESET"
-			# num2braille.sh $n
+		if [ ! -n "$name" ]; then
+			name="$index$GREY$id"
 		fi
+
+		# is cut
+		if [ "$id" == "@$cut_window_id" ]; then
+			star="$WHITE✂ "
+			session_color="$BLACK"
+			message=" $RED✂ ✂ ✂ "
+			window_color="$GREY"
+		else
+			star=" "
+		fi
+		
+		# is home
+		if [[ "$active" == '1' && "$session_id" == "$this_session_id" ]]; then
+			# star="$WHITE*"
+			# "⌂" "►" "▉" "⟩" " " "●" "▶"
+			div="$ORANGE>"
+			half_background="$ORANGE_BG"
+			window_color="$ORANGE"
+			id_color="$ORANGE"
+			session_color="$WHITE"
+		fi
+
+		# is home (in other session)
+		if [ "$active" -eq 1 ]; then
+			div="$ORANGE>"
+			# session_color="$WHITE"
+		fi
+
+		# is first line of each session
+		if [ "$first" -eq 1 ]; then
+			# if [[ "$session_id" == "$this_session_id" ]]; then
+			# 	session_color="$ORANGE"
+			# else
+				# session_color="$WHITE"
+			# fi
+			echo # no empty lines
+		else
+			echo -n
+			# session_color="$GREY"
+		fi
+
+		first=0
+		# marked_marker=""
+		# [ "$marked" -eq 1 ] && marked_marker=" $MARKED_FG""M"
+		# star="$session $this_session_id"
+		id="${id:1}"
+		printf -v id_column "$id_color%-4s" "$id"
+		# div="$div $index"
+		if [ "$linked_n" -eq 1 ]; then
+			linked_n=''
+		fi
+		main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $linked_n$marked_marker"
+
+		dashes=""
+		for ((i=1; i<=panes_n; i++)); do
+			dashes+="▪"
+		done
+		count_column="$dashes"
+		# count_column="$n" # TODO option
+			
+		echo "$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column  $message                                      $RESET"
+		# num2braille.sh $n
 	done <<< "$windows"
 }
 
