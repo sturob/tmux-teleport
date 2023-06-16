@@ -28,11 +28,11 @@ else
 			  --nth=2.. \
 			  --ansi \
 	          --preview "$BASE/"'preview-buffered.sh {}' \
-			  --bind "ctrl-w:execute(tmux new-window -d -c ~ -n {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-x:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
 			  --bind "ctrl-t:execute($BASE/window-transport.sh {})+reload(eval $LIST_CMD)" \
+			  --bind "ctrl-]:execute(tmux new-window -d -c ~ -n {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		      --bind "tab:execute-silent($BASE/pane-cycle-next.sh {})+refresh-preview" \
 			  --bind "btab:execute-silent($BASE/pane-mark.sh {})+refresh-preview" \
 			  --bind "ctrl-e:execute($BASE/window-rename.sh {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
