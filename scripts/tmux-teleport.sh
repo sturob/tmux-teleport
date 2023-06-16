@@ -13,46 +13,6 @@ LIST_CMD="$CURRENT_DIR/list-buffered.sh"
 
 TMP="/tmp/tmux-teleport.tmp"
 
-
-# totally safe ctrl keys
-	# ctrl-h
-	# ctrl-l
-	# ctrl-o
-	# ctrl-q
-	# ctrl-r
-	# ctrl-s
-	# ctrl-t
-	# ctrl-v
-	# ctrl-x
-	# ctrl-\
-    # ctrl-]
-    # ctrl-^      (ctrl-6)
-    # ctrl-/      (ctrl-_)
-
-# safe-ish
-	# ctrl-g : Abort (same as ESC)
-
-	# history
-	  # ctrl-n ctrl-p 
-
-# worth keeping
-	# readline a-like
-		# ctrl-y  yank
-		# ctrl-u  wipe line
-		# ctrl-d  del char
-		# ctrl-w  delete last word
-		# ctrl-b  back char
-		# ctrl-f  back del char
-		# ctrl-a : (or home key) beginning of line
-		# ctrl-e : (or end key) end of line
-
-# ctrl-k / ctrl-p : Move cursor up
-# ctrl-j / ctrl-n : Move cursor down
-
-# ctrl-c : Terminate fzf
-
-# ctrl-space  not widely supported
-
 tmux set-environment -u -g cut_window_id
 
 # fixme for 1.x
