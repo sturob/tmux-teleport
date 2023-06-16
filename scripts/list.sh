@@ -26,10 +26,10 @@ cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '
 
 print_windows() {
 	local session="$1"
-	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_index} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_name}')
+	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_index} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_linked_sessions} #{window_name}')
 	local first=1
 	while IFS= read -r window; do
-		read -r session_id id index n active last marked name <<< "$window"
+		read -r session_id id index panes_n active last marked linked_n name <<< "$window"
 		echo -n $RESET
 		if [  "$this_window_id" != "$id" ]; then # until we support popup
 			window_color="$WHITE"
@@ -96,10 +96,13 @@ print_windows() {
 			id="${id:1}"
 			printf -v id_column "$id_color%-4s" "$id"
 			# div="$div $index"
-			main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $marked_marker"
+			if [ "$linked_n" -eq 1 ]; then
+				linked_n=''
+			fi
+			main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $linked_n$marked_marker"
 
 			dashes=""
-			for ((i=1; i<=n; i++)); do
+			for ((i=1; i<=panes_n; i++)); do
 				dashes+="▪"
 			done
 			count_column="$dashes"
