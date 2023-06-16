@@ -1,73 +1,58 @@
 # tmux-teleport
 
 use fzf to jump straight to windows, switch sessions, easily move windows + panes. all through one hotkey
+
 use fzf to visualize and arrange your windows and panes, all through one hotkey
 
-no configuration necessary
+visualize, navigate and organize your windows, sessions and panes, all through one hotkey, no configuration necessary
 
 opinionated  / curated core
 
 designed to be most useful even with a large number of window and sessions
 
-even if you don't have a large number now, this plugin will make that an option worth exploring
-
 ## objectives
 
 - quickly navigate to any window
-- visually useful overviews
-- a better way to move windows around
-- muscle memory compatible
-- discoverability
-- create new window if no matches (ctrl-w enter)
+- useful overview
+- better ways to move windows around
+- muscle-memory compatible
+- discoverable functionality
 - replace the current pane/windows mark/join confusion
+
 
 ## default hotkey
 
 	alt-/   activate tmux-portal
 
-## shortcuts
+
+## key bindings
+	esc      exit
 
 	enter    switch to window
 	ctrl-x	 cut window 
-	ctrl-p   paste window
-	ctrl-q   cancel cut
-	tab      select a pane
+	ctrl-p   paste window (or marked pane)
 
-	ctrl-g     grab a window and pull it here
-	ctrl-t     teleport current window to somewhere else
-
-	tab        next pane
+	tab        select a pane
 	shift-tab  un/mark pane
 
+	ctrl-g   grab window 
+	ctrl-t   transport home window
 
-## next
-- preview
-	- dynamic height for panes
-- pane management decision
-	- selected one expands? at the top? one down?
-	- mark to paste?
-- cut right alignment
-- stop right side overflow
-- fix flickers
+	ctrl-]   add a window, named with the contents of the query string
+	ctrl-l   reset everything
+	ctrl-f   refresh preview
+	ctrl-r   refresh list
+	ctrl-/   vim motion
 
-## future possibilities
+	del      delete window
 
-- readd * to select current
-- settings
-- double buffer preview:  > file; cat file
-- receive http tmux events (see tmux hooks) and stay updated
-	- https://github.com/junegunn/fzf/pull/3094 --listen=HTTP_PORT
-- tips for beginners when opening a new window or session
-- auto refresh? (seq 100 | fzf --query 5 --sync --bind 'start:up+up+up+reload:sleep 1; seq 1000')
-- preview: turn color back on, need to figure out how to s/$RESET/$BLACK/g
-	- live updates https://sourcegraph.com/github.com/junegunn/fzf/-/blob/ADVANCED.md#log-tailing
-- some indication of pane history used/size [==== ] 8039/10k
 
 ## options
 
 -	escape_exits = true
 -	use_unicode = true
 -	session_divs = true
+-   histograms = true
 -	-v force vertical
 
 
