@@ -11,38 +11,37 @@ __help="$GREY
   ▐ ▖▌▐ ▌▌ ▌▗▚    ▐ ▖▛▀ ▐ ▛▀ ▙▄▘▌ ▌▌  ▐ ▖
    ▀ ▘▝ ▘▝▀▘▘ ▘    ▀ ▝▀▘ ▘▝▀▘▌  ▝▀ ▘   ▀ 
         v0.1$RESET
+
+
+  Search for windows/sessions, use up/down keys to select a window
   $BLUE
-  KEYS
   $RESET
-    enter       Go to $GREYLIGHT_BG""window$RESET
+  RETURN    Go to selected $UNDERLINE""window$RESET (add a named window if 0 matches)
 
-    ctrl-x      Cut $GREYLIGHT_BG""window$RESET 
+  CTRL-x    Cut selected $UNDERLINE""window$RESET 
+  CTRL-p    Paste the cut $RED✂ $RESET window
 
-    ctrl-p      Paste cut window $RED✂  $RESET (or marked pane)
+  CTRL-t    Take active $ORANGE""window$RESET, and put it next to selected $UNDERLINE""window$RESET
+  CTRL-g    Grab selected $UNDERLINE""window$RESET and pull it next to active $ORANGE""window$RESET 
 
-    ctrl-t      Take your $ORANGE""home window$RESET and put it next to $GREYLIGHT_BG""window$RESET
+  CTRL-l    Clear search query and reset
+  CTRL-w    Wipe search query
+    
+  CTRL-r    Reload list of windows
+  CTRL-f    Refresh the overview of panes
 
-    ctrl-g      Grab $GREYLIGHT_BG""window$RESET and pull it next to your $ORANGE""home window$RESET 
+  CTRL-]    Add a window, named with the search query
+  CTRL-e    Rename $UNDERLINE""window$RESET (refresh names with CTRL-r)
+  DELETE    Delete selected $UNDERLINE""window$RESET
 
-	delete      Delete $GREYLIGHT_BG""window$RESET
-
-    esc         Exit
-
-    ctrl-e      Rename $GREYLIGHT_BG""window$RESET (needs tmux > 3.2)
-
-    ctrl-r      Reload list of windows
- 
-    ctrl-f      Refresh the list of panes
-
-    tab         Select next pane
-
-    shift-tab   Mark selected pane
-
-
- $ORANGE home window$RESET = the window you were in when you launched tmux-teleport
-
-       $GREYLIGHT_BG""window$RESET = the window selected on the left
+  ESCAPE    Exit
 "
+# tab         Select next pane
+# shift-tab   Mark selected pane
+
+# $ORANGE home window$RESET = the window you were in when you launched tmux-teleport
+
+# $GREYLIGHT_BG""window$RESET = the window selected on the left
 
 window_id=$(echo $1 | awk '{print $1}')
 window_name=$(echo $1 | awk '{print $4}')

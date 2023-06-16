@@ -16,6 +16,7 @@ GREYLIGHT_BG=$(tput setab 236)
 
 MARKED_FG=$(tput setaf 5)
 
-# BOLD=$(tput bold)
+BOLD=$(tput bold)
 # NORMAL=$(tput sgr0)
+UNDERLINE=$(tput smul)
 
