@@ -105,7 +105,6 @@ tmux list-sessions -F '#{session_name}' | while read -r session; do
 done
 
 echo
-echo "$INVISIBLE_BRAILLE =   ? help"
+echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE$ new session"
 echo
-echo "$INVISIBLE_BRAILLE =   $ new session"
-echo
+echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE? help"
