@@ -12,12 +12,12 @@ designed to be most useful even with a large number of window and sessions
 
 ## objectives
 
-- quickly navigate to any window
-- useful overview
-- better ways to move windows around
+- provide a useful overview of all tmux session
+- quickly navigate to any tmux window
 - muscle-memory compatible
+- better ways to move windows around
 - discoverable functionality
-- replace the current pane/windows mark/join confusion
+- replace pane/windows mark/join confusion
 
 
 ## default hotkey
