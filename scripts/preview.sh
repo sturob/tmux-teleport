@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 RESET=$(tput sgr0)
 BLUEFG=$(tput setaf 4)
 
@@ -58,7 +60,11 @@ case "$1" in
 		;;
 esac
 
+
+
+
 if [[ ! $window_id =~ ^-?[0-9]+$ ]]; then
+	$CURRENT_DIR/center.sh
 	exit
 fi
 
