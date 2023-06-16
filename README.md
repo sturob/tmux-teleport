@@ -1,34 +1,36 @@
 # tmux-teleport
 
-Use fzf to manage windows, sessions, and panes.
+A better way to manage tmux windows, sessions, and panes.
 
-Launch with one hotkey, no configuration necessary. 
+<img src="shot.png">
 
 ## Functionality
 
-- quickly navigate to any tmux window
-- easily move windows
-- a useful overview of all windows and session
-- create new windows and session
-- find un-named windows
-- delete and rename windows
+- Quickly navigate to any tmux window
+- Easily move windows
+- A useful overview of all windows and session
+- Create new windows and session
+- Find un-named windows
+- Delete and rename windows
 
 ## Objectives
 
-- informational but not overwhelming
-- be easy to learn, discoverable functionality
-- promote muscle-memory
-- maximize flow
-- handle a large number of windows
-- promote window naming but support unnamed windows
+- Informational but not overwhelming
+- Be easy to learn, discoverable functionality
+- One hotkey + zero config needed
+- Promote muscle-memory
+- Maximize flow
+- Handle a large number of windows
+- Promote window naming but support unnamed windows
 
-## Default Hotkey
-
-	alt-/   activate tmux-portal
 
 ## How it works
 
-After launching search for any window or session. Use up/down keys to select a window. See Key Bindings for actions that can be performed on the selected window.
+Launch using alt-/ (or ???).
+
+After launch search for any window or session. Use up/down keys to select a window.
+
+See [Key Bindings](#key-bindings) for actions that can be performed on the selected window.
 
 ### Creating new windows
 
@@ -46,11 +48,11 @@ When #1 is performed, tmux will inject 'tmux rename-window ;' into the new windo
 
 There are three ways to move windows:
 
-1. cut and paste. ctrl-x cuts, ctrl-p pastes.
+1. Cut and paste. ctrl-x cuts, ctrl-p pastes.
 
-2. teleport. this is for when you are working in a window (let's call it your home window) and realize it should be in a different session. select the window you want to move your home window next to and hit ctrl-t.
+2. Teleport. This is for when you are working in a window (the current window) and realize it should be in a different session. Select the target window you want to move your current window next to and hit ctrl-t.
 
-3. grab. there's a window somewhere else that should be in your current session. select it and hit ctrl-g
+3. Grab. Say there's a window elsewhere that should be next to your current window. Select it and hit ctrl-g.
 
 ### Extras
 
@@ -92,7 +94,9 @@ This will not work so well if you use special characters in window names. So don
 
 Most readline bindings (eg. ctrl-a/ctrl-e beginning/end of line) are also available.
 
-## options
+## Options
+
+### TODO
 
 -	escape_exits = true
 -	use_unicode = true
@@ -101,13 +105,14 @@ Most readline bindings (eg. ctrl-a/ctrl-e beginning/end of line) are also availa
 -	-v force vertical
 
 
-## dependencies
+## Works well with
+
+- tmux-resurrect
+- extrakto
+
+## Dependencies
 
 - tmux
 - fzf
 - awk
-
-## see also
-
-- https://github.com/thuanowa/tmux-fzf-session-switch
 
