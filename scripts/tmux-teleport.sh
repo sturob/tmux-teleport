@@ -95,8 +95,9 @@ first_col=$(echo $fzf_output | awk '{print $3}');
 if [[ $first_col == '+' ]]; then
 	tmux new-window -c ~
 
-	# if bash echo split/move help 
-
+	# tmux command-prompt -p "Window name:" "rename-window '%%'"
+	tmux send-keys 'tmux rename-window \;' # user can still enter a command
+	tmux send-keys C-l
 	exit
 fi
 
