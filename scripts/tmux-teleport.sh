@@ -28,15 +28,14 @@ else
 			  --nth=2.. \
 			  --ansi \
 	          --preview "$BASE/"'preview-buffered.sh {}' \
-			  --bind "ctrl-x:execute-silent($BASE/"'window-cut.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-p:execute-silent($BASE/"'window-paste.sh'" {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-g:execute-silent($BASE/"'window-grab.sh'" {})+reload(eval $LIST_CMD)" \
-			  --bind "ctrl-t:execute($BASE/"'window-transport.sh'" {})+reload(eval $LIST_CMD)" \
 			  --bind "ctrl-w:execute(tmux new-window -d -c ~ -n {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-a:execute-silent($BASE/"'pane-move.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-		      --bind "tab:execute-silent($BASE/"'pane-cycle-next.sh {})+refresh-preview' \
-			  --bind "btab:execute-silent($BASE/"'pane-mark.sh'" {})+refresh-preview" \
-			  --bind "ctrl-e:execute($BASE/"'window-rename.sh'" {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-x:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
+			  --bind "ctrl-t:execute($BASE/window-transport.sh {})+reload(eval $LIST_CMD)" \
+		      --bind "tab:execute-silent($BASE/pane-cycle-next.sh {})+refresh-preview" \
+			  --bind "btab:execute-silent($BASE/pane-mark.sh {})+refresh-preview" \
+			  --bind "ctrl-e:execute($BASE/window-rename.sh {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-r:execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
 	          --bind "ctrl-f:refresh-preview" \
 	          --bind "ctrl-l:clear-query+top+clear-screen" \
