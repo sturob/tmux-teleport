@@ -1,42 +1,40 @@
 #!/bin/bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 source "$CURRENT_DIR/_colors.sh"
 
-
 __help="$GREY
-  ▐               ▐     ▜             ▐  
-  ▜▀ ▛▚▀▖▌ ▌▚▗▘▄▄▖▜▀ ▞▀▖▐ ▞▀▖▛▀▖▞▀▖▙▀▖▜▀ 
-  ▐ ▖▌▐ ▌▌ ▌▗▚    ▐ ▖▛▀ ▐ ▛▀ ▙▄▘▌ ▌▌  ▐ ▖
-   ▀ ▘▝ ▘▝▀▘▘ ▘    ▀ ▝▀▘ ▘▝▀▘▌  ▝▀ ▘   ▀ 
-        v0.2$RESET
-
-
-  Enter text to filter the list of windows and actions. 
+                                     ▗▄▖
+   ▐▌                       ▐▌       ▝▜▌                       ▐▌
+  ▐███ ▐█▙█▖▐▌ ▐▌▝█ █▘     ▐███  ▟█▙  ▐▌   ▟█▙ ▐▙█▙  ▟█▙  █▟█▌▐███
+   ▐▌  ▐▌█▐▌▐▌ ▐▌ ▐█▌       ▐▌  ▐▙▄▟▌ ▐▌  ▐▙▄▟▌▐▛ ▜▌▐▛ ▜▌ █▘   ▐▌
+   ▐▌  ▐▌█▐▌▐▌ ▐▌ ▗█▖  ██▌  ▐▌  ▐▛▀▀▘ ▐▌  ▐▛▀▀▘▐▌ ▐▌▐▌ ▐▌ █    ▐▌
+   ▐▙▄ ▐▌█▐▌▐▙▄█▌ ▟▀▙       ▐▙▄ ▝█▄▄▌ ▐▙▄ ▝█▄▄▌▐█▄█▘▝█▄█▘ █    ▐▙▄
+    ▀▀ ▝▘▀▝▘ ▀▀▝▘▝▀ ▀▘       ▀▀  ▝▀▀   ▀▀  ▝▀▀ ▐▌▀▘  ▝▀▘  ▀     ▀▀
+        v0.2                                   ▐▌
+$RESET
+  Enter search text to filter the list of windows and actions. 
 
   Use the up/down keys to select one, then hit:
 
+	RETURN   Go to selected $UNDERLINE""window$RESET
 
-	RETURN    Go to selected $UNDERLINE""window$RESET
+	CTRL-]   Add a window, named with the search text
+	CTRL-e   Rename selected $UNDERLINE""window$RESET 
+	DELETE   Delete selected $UNDERLINE""window$RESET
 
-	CTRL-]    Add a window, named with the search query
-	CTRL-e    Rename selected $UNDERLINE""window$RESET (refresh names with CTRL-r)
-	DELETE    Delete selected $UNDERLINE""window$RESET
+	CTRL-x   Cut selected $UNDERLINE""window$RESET 
+	CTRL-p   Paste the cut $RED""window ✂ ✂ ✂$RESET
+	CTRL-t   Take active $ORANGE""window$RESET and put it next to selected $UNDERLINE""window$RESET
+	CTRL-g   Grab selected $UNDERLINE""window$RESET and pull it next to active $ORANGE""window$RESET 
 
-	CTRL-x    Cut selected $UNDERLINE""window$RESET 
-	CTRL-p    Paste the cut $RED✂ $RESET window
+	CTRL-l   Clear search text and reset
+	CTRL-w   Wipe search text
 
-	CTRL-t    Take active $ORANGE""window$RESET and put it next to selected $UNDERLINE""window$RESET
-	CTRL-g    Grab selected $UNDERLINE""window$RESET and pull it next to active $ORANGE""window$RESET 
+	CTRL-r   Reload list of windows $GREY(use if renames don't show)$RESET
+	CTRL-f   Refresh the overview of panes
 
-	CTRL-l    Clear search query and reset
-	CTRL-w    Wipe search query
-
-	CTRL-r    Reload list of windows
-	CTRL-f    Refresh the overview of panes
-
-	ESCAPE    Exit
+	ESCAPE   Exit
 
 
   $GREEN""Press CTRL-w (or backspace) to leave this screen
