@@ -3,30 +3,29 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/_colors.sh"
 
-__help="$GREY
-                                     ▗▄▖
-   ▐▌                       ▐▌       ▝▜▌                       ▐▌
-  ▐███ ▐█▙█▖▐▌ ▐▌▝█ █▘     ▐███  ▟█▙  ▐▌   ▟█▙ ▐▙█▙  ▟█▙  █▟█▌▐███
-   ▐▌  ▐▌█▐▌▐▌ ▐▌ ▐█▌       ▐▌  ▐▙▄▟▌ ▐▌  ▐▙▄▟▌▐▛ ▜▌▐▛ ▜▌ █▘   ▐▌
-   ▐▌  ▐▌█▐▌▐▌ ▐▌ ▗█▖  ██▌  ▐▌  ▐▛▀▀▘ ▐▌  ▐▛▀▀▘▐▌ ▐▌▐▌ ▐▌ █    ▐▌
-   ▐▙▄ ▐▌█▐▌▐▙▄█▌ ▟▀▙       ▐▙▄ ▝█▄▄▌ ▐▙▄ ▝█▄▄▌▐█▄█▘▝█▄█▘ █    ▐▙▄
-    ▀▀ ▝▘▀▝▘ ▀▀▝▘▝▀ ▀▘       ▀▀  ▝▀▀   ▀▀  ▝▀▀ ▐▌▀▘  ▝▀▘  ▀     ▀▀
-        v0.2                                   ▐▌
+__help="$GREY                                    ▗▄▖
+  ▐▌                       ▐▌       ▝▜▌                       ▐▌
+ ▐███ ▐█▙█▖▐▌ ▐▌▝█ █▘     ▐███  ▟█▙  ▐▌   ▟█▙ ▐▙█▙  ▟█▙  █▟█▌▐███
+  ▐▌  ▐▌█▐▌▐▌ ▐▌ ▐█▌       ▐▌  ▐▙▄▟▌ ▐▌  ▐▙▄▟▌▐▛ ▜▌▐▛ ▜▌ █▘   ▐▌
+  ▐▌  ▐▌█▐▌▐▌ ▐▌ ▗█▖  ██▌  ▐▌  ▐▛▀▀▘ ▐▌  ▐▛▀▀▘▐▌ ▐▌▐▌ ▐▌ █    ▐▌
+  ▐▙▄ ▐▌█▐▌▐▙▄█▌ ▟▀▙       ▐▙▄ ▝█▄▄▌ ▐▙▄ ▝█▄▄▌▐█▄█▘▝█▄█▘ █    ▐▙▄
+   ▀▀ ▝▘▀▝▘ ▀▀▝▘▝▀ ▀▘       ▀▀  ▝▀▀   ▀▀  ▝▀▀ ▐▌▀▘  ▝▀▘  ▀     ▀▀
+       v0.2                                   ▐▌
 $RESET
   Enter search text to filter the list of windows and actions. 
 
   Use the up/down keys to select one, then hit:
 
-	RETURN   Go to selected $UNDERLINE""window$RESET
+	RETURN   Go to $UNDERLINE""selected window$RESET
 
 	CTRL-]   Add a window, named with the search text
-	CTRL-e   Rename selected $UNDERLINE""window$RESET 
-	DELETE   Delete selected $UNDERLINE""window$RESET
+	CTRL-e   Rename $UNDERLINE""selected window$RESET 
+	DELETE   Delete $UNDERLINE""selected window$RESET
 
-	CTRL-x   Cut selected $UNDERLINE""window$RESET 
-	CTRL-p   Paste the cut $RED""window ✂ ✂ ✂$RESET
-	CTRL-t   Take active $ORANGE""window$RESET and put it next to selected $UNDERLINE""window$RESET
-	CTRL-g   Grab selected $UNDERLINE""window$RESET and pull it next to active $ORANGE""window$RESET 
+	CTRL-x   Cut $UNDERLINE""selected window$RESET 
+	CTRL-p   Paste the $RED""cut window ✂ ✂ ✂$RESET
+	CTRL-t   Take $ORANGE""active window$RESET and put it next to $UNDERLINE""selected window$RESET
+	CTRL-g   Grab $UNDERLINE""selected window$RESET and pull it next to $ORANGE""active window$RESET 
 
 	CTRL-l   Clear search text and reset
 	CTRL-w   Wipe search text
@@ -37,7 +36,7 @@ $RESET
 	ESCAPE   Exit
 
 
-  $GREEN""Press CTRL-w (or backspace) to leave this screen
+        $GREEN""Press CTRL-w (or backspace) to leave this screen
 "
 # tab         Select next pane
 # shift-tab   Mark selected pane
