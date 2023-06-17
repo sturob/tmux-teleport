@@ -35,7 +35,7 @@ else
 			  --bind "ctrl-]:execute-silent($BASE/window-new.sh {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		      --bind "tab:execute-silent($BASE/pane-cycle-next.sh {})+refresh-preview" \
 			  --bind "btab:execute-silent($BASE/pane-mark.sh {})+refresh-preview" \
-			  --bind "ctrl-e:execute($BASE/window-rename.sh {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+			  --bind "ctrl-e:execute-silent($BASE/window-rename.sh {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 			  --bind "ctrl-r:execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
 	          --bind "ctrl-f:refresh-preview" \
 	          --bind "ctrl-l:clear-query+top+clear-screen" \
