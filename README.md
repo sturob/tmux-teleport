@@ -8,8 +8,8 @@ A better way to manage tmux windows, sessions, and panes.
 
 - Quickly navigate to any tmux window
 - Easily move windows
-- A useful overview of all windows and session
-- Create new windows and session
+- A useful overview of all windows and sessions
+- Create new windows and sessions
 - Find un-named windows
 - Delete and rename windows
 
@@ -22,6 +22,9 @@ A better way to manage tmux windows, sessions, and panes.
 - Maximize flow
 - Handle a large number of windows
 - Promote window naming but support unnamed windows
+
+## Installation
+
 
 
 ## How it works
@@ -38,9 +41,9 @@ There are three ways to create a new window:
 
 1. hit return immediately after launch (+ new window is preselected)
 
-2. if a search has no matches, hit return to create a window named after your search query
+2. at any time, hit ctrl-] to create a new window named after your search query
 
-3. at any time, hit ctrl-] to create a new window named after your search query
+3. if a search has no matches, hit return to create a window named after your search query [TODO]
 
 When #1 is performed, tmux will inject 'tmux rename-window ;' into the new window. This is not a bug. It's intended to make it as easy as possible to rename the new window (delete the ; and enter a name), but gets out of the way if you want to enter a blind command.
 
