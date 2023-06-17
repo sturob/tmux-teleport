@@ -3,6 +3,8 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/_colors.sh"
 
+LC_CTYPE=C && LANG=C # fix sed on bsd
+
 __help="$GREY                                    ▗▄▖
   ▐▌                       ▐▌       ▝▜▌                       ▐▌
  ▐███ ▐█▙█▖▐▌ ▐▌▝█ █▘     ▐███  ▟█▙  ▐▌   ▟█▙ ▐▙█▙  ▟█▙  █▟█▌▐███
