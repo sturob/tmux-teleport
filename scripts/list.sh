@@ -7,6 +7,8 @@ this_window_id=$(tmux display-message -p '#{window_id}')
 this_session_id=$(tmux display-message -p '#{session_id}')
 cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '{print $2}')
 
+TARGET_WIDTH=47
+
 print_windows() {
 	local session="$1"
 	local windows=$(tmux list-windows -t "$session" -F '#{session_id} #{window_id} #{window_index} #{window_panes} #{window_active} #{window_last_flag} #{window_marked_flag} #{window_linked_sessions} #{window_name}')
@@ -25,6 +27,7 @@ print_windows() {
 		pointer=""
 		id_color="$BLACK"
 		star=" "
+		star_color=""
 		# id_color="$WHITE"
 
 		# no name
@@ -34,7 +37,8 @@ print_windows() {
 
 		# is home (in other session)
 		if [ "$active" -eq 1 ]; then
-			star="$BLACK#"
+			star="#"
+			star_color="$BLACK"
 			div="$ORANGE>"
 			# session_color="$WHITE"
 		fi
@@ -61,28 +65,18 @@ print_windows() {
 
 		# is first line of each session
 		if [ "$first" -eq 1 ]; then
-			# if [[ "$session_id" == "$this_session_id" ]]; then
-			# 	session_color="$ORANGE"
-			# else
-				# session_color="$WHITE"
-			# fi
 			echo # no empty lines
-		else
-			echo -n
-			# session_color="$GREY"
 		fi
 
 		first=0
-		# marked_marker=""
-		# [ "$marked" -eq 1 ] && marked_marker=" $MARKED_FG""M"
-		# star="$session $this_session_id"
 		id="${id:1}"
 		printf -v id_column "$id_color%-4s" "$id"
-		# div="$div $index"
+
 		if [ "$linked_n" -eq 1 ]; then
 			linked_n=''
 		fi
-		main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name$star$linked_n$marked_marker"
+
+		main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name$star_color$star$linked_n$marked_marker"
 
 		dashes=""
 		for ((i=1; i<=panes_n; i++)); do
@@ -90,8 +84,19 @@ print_windows() {
 		done
 		count_column="$dashes"
 		# count_column="$n" # TODO option
+
+		plain_alt="NNNN $session > $name$star $dashes" 
+		str_length=${#plain_alt}
+		difference=$((TARGET_WIDTH - str_length + 1))
+
+		# Use printf to pad the string with spaces
+ 		# echo -n "$plain_alt"
+		# printf "%-${difference}s" ""
+		# echo "X"
 			
-		echo "$RESET$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column                                      "
+		echo -n "$RESET$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column"
+		printf "%-${difference}s" ""
+		echo
 		# num2braille.sh $n
 	done <<< "$windows"
 }
