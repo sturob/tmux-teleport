@@ -75,7 +75,8 @@ if [[ $first_col == '$' ]]; then
 	# tmux command-prompt -p "Session name:" "rename-session -t '%%'"
 
 	# if bash echo shortcuts for new-window rename-window 
-	# send-keys tmux rename-session -t ""
+	tmux send-keys -t "$session_id" 'tmux rename-session '
+	tmux send-keys -t "$session_id" C-l
  	exit
 fi
 
