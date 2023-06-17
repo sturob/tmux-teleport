@@ -66,9 +66,10 @@ if [[ ! $window_id =~ ^-?[0-9]+$ ]]; then
 	exit
 fi
 
-panes=$(tmux list-panes -t "@$window_id" -F "#{pane_id} #{pane_current_command} #{pane_current_path} \
+panes=$(tmux list-panes -t "@$window_id" -F "#{pane_id} #{pane_current_command}  \
 	                                         #{pane_width} #{pane_pid} #{pane_tty} #{pane_active} \
-	                                         #{pane_title} #{pane_height} #{pane_marked}")
+	                                         #{pane_title} #{pane_height} #{pane_marked} \
+											 #{pane_current_path}")
 									
 # default_title=$(hostname -s)
 TTY_BG="$(tput setab 16)"
@@ -85,7 +86,7 @@ echo
 
 i=0
 while IFS= read -r pane; do
-	read -r id cmd path w pid tty active title h is_marked<<< "$pane"
+	read -r id cmd w pid tty active title h is_marked path <<< "$pane"
 	raw_id="${id:1}"
 	full_width=$(($w-1))
 	padded_width=$(($full_width+1))
@@ -94,7 +95,7 @@ while IFS= read -r pane; do
 
 	i=$((i+1)) 
 
-	if [ $active -eq '1' ]; then
+	if [ "$active" -eq '1' ]; then
 		pane_bf="$BLACK_BG$WHITE"
 	else
 		pane_bf="$BLACK_BG$GREY"
