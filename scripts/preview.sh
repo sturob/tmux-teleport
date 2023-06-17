@@ -10,31 +10,36 @@ __help="$GREY
   ▜▀ ▛▚▀▖▌ ▌▚▗▘▄▄▖▜▀ ▞▀▖▐ ▞▀▖▛▀▖▞▀▖▙▀▖▜▀ 
   ▐ ▖▌▐ ▌▌ ▌▗▚    ▐ ▖▛▀ ▐ ▛▀ ▙▄▘▌ ▌▌  ▐ ▖
    ▀ ▘▝ ▘▝▀▘▘ ▘    ▀ ▝▀▘ ▘▝▀▘▌  ▝▀ ▘   ▀ 
-        v0.1$RESET
+        v0.2$RESET
 
 
-  Search for windows/sessions, use up/down keys to select a window
-  $BLUE
-  $RESET
-  RETURN    Go to selected $UNDERLINE""window$RESET (add a named window if 0 matches)
+  Enter text to filter the list of windows and actions. 
 
-  CTRL-x    Cut selected $UNDERLINE""window$RESET 
-  CTRL-p    Paste the cut $RED✂ $RESET window
+  Use the up/down keys to select one, then hit:
 
-  CTRL-t    Take active $ORANGE""window$RESET, and put it next to selected $UNDERLINE""window$RESET
-  CTRL-g    Grab selected $UNDERLINE""window$RESET and pull it next to active $ORANGE""window$RESET 
 
-  CTRL-l    Clear search query and reset
-  CTRL-w    Wipe search query
-    
-  CTRL-r    Reload list of windows
-  CTRL-f    Refresh the overview of panes
+	RETURN    Go to selected $UNDERLINE""window$RESET
 
-  CTRL-]    Add a window, named with the search query
-  CTRL-e    Rename $UNDERLINE""window$RESET (refresh names with CTRL-r)
-  DELETE    Delete selected $UNDERLINE""window$RESET
+	CTRL-]    Add a window, named with the search query
+	CTRL-e    Rename selected $UNDERLINE""window$RESET (refresh names with CTRL-r)
+	DELETE    Delete selected $UNDERLINE""window$RESET
 
-  ESCAPE    Exit
+	CTRL-x    Cut selected $UNDERLINE""window$RESET 
+	CTRL-p    Paste the cut $RED✂ $RESET window
+
+	CTRL-t    Take active $ORANGE""window$RESET and put it next to selected $UNDERLINE""window$RESET
+	CTRL-g    Grab selected $UNDERLINE""window$RESET and pull it next to active $ORANGE""window$RESET 
+
+	CTRL-l    Clear search query and reset
+	CTRL-w    Wipe search query
+
+	CTRL-r    Reload list of windows
+	CTRL-f    Refresh the overview of panes
+
+	ESCAPE    Exit
+
+
+  $GREEN""Press CTRL-w (or backspace) to leave this screen
 "
 # tab         Select next pane
 # shift-tab   Mark selected pane

@@ -2,6 +2,7 @@ INVISIBLE_BRAILLE="⠀"
 
 RESET=$(tput sgr0)
 
+GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 GREY=$(tput setaf 8)
 BLACK=$(tput setaf 0)
