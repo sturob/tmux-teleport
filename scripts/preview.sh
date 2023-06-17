@@ -57,9 +57,6 @@ case "$1" in
 		;;
 esac
 
-
-
-
 if [[ ! $window_id =~ ^-?[0-9]+$ ]]; then
 	sleep 0.25
 	$CURRENT_DIR/center.sh
@@ -144,7 +141,7 @@ $RESET$pane_bottom"
 
 	# context line
 	echo -n "    $BLUE$path$RESET "
-	pstree -C age $pid | sed "s/^/ /" | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
+	pstree $pid | sed "s/^/ /" # | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
 	echo
 
 	# echo # "       $cmd  $pid  "
