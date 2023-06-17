@@ -70,8 +70,6 @@ panes=$(tmux list-panes -t "@$window_id" -F "#{pane_id} #{pane_current_command} 
 	                                         #{pane_width} #{pane_pid} #{pane_tty} #{pane_active} \
 	                                         #{pane_title} #{pane_height} #{pane_marked}")
 									
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # default_title=$(hostname -s)
 TTY_BG="$(tput setab 16)"
 
