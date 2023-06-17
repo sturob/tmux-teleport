@@ -13,39 +13,69 @@ A better way to manage tmux windows, sessions, and panes.
 - Find un-named windows
 - Delete and rename windows
 
+
 ## Objectives
 
-- Informational but not overwhelming
-- Be easy to learn, discoverable functionality
+- Informationally rich but not overwhelming
+- Be easy to learn, with discoverable functionality
 - One hotkey + zero config needed
-- Promote muscle-memory
-- Maximize flow
+- Promote muscle-memory + maximize flow
 - Handle a large number of windows
 - Promote window naming but support unnamed windows
 
+
+## Dependencies
+
+- [tmux](https://github.com/tmux/tmux)
+- [fzf](https://github.com/junegunn/fzf)
+- pstree (if you want detailed pane process information)
+- awk + sed
+
+
 ## Installation
 
+### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
+
+Add plugin to the list of TPM plugins in `.tmux.conf`:
+
+    set -g @plugin 'sturob/tmux-teleport'
+
+Hit `prefix + I` to fetch the plugin and source it. You should now be able to
+use the plugin.
+
+### Manual Installation
+
+Clone the repo:
+
+    $ git clone https://github.com/sturob/tmux-teleport ~/clone/path
+
+Add this line to the bottom of `.tmux.conf`:
+
+    run-shell ~/clone/path/teleport.tmux
+
+Reload TMUX environment with: `$ tmux source-file ~/.tmux.conf`.
+You should now be able to use the plugin.
 
 
 ## How it works
 
-Launch using alt-/ (or ???).
+Launch using alt-/ (or prefix-T)
 
-After launch search for any window or session. Use up/down keys to select a window.
+Enter a search query to filter the list of windows and actions. Use up+down keys to select one.
 
-See [Key Bindings](#key-bindings) for actions that can be performed on the selected window.
+See [Key Bindings](#key-bindings) for actions that can be performed on a selected window.
+
 
 ### Creating new windows
 
-There are three ways to create a new window:
+There are two ways to create a new window:
 
-1. hit return immediately after launch (+ new window is preselected)
+1. at any time, hit ctrl-] to create a new window named after your search query
 
-2. at any time, hit ctrl-] to create a new window named after your search query
+2. hit return immediately after launch
 
-3. if a search has no matches, hit return to create a window named after your search query [TODO]
+When using the latter, tmux will inject 'tmux rename-window ;' into the new window. This is not a bug. It's intended to make it as easy as possible to rename the new window (delete the ; and enter a name), but gets out of the way if you want to enter a blind command.
 
-When #1 is performed, tmux will inject 'tmux rename-window ;' into the new window. This is not a bug. It's intended to make it as easy as possible to rename the new window (delete the ; and enter a name), but gets out of the way if you want to enter a blind command.
 
 ### Moving windows
 
@@ -57,65 +87,63 @@ There are three ways to move windows:
 
 3. Grab. Say there's a window elsewhere that should be next to your current window. Select it and hit ctrl-g.
 
-### Extras
 
-Using fzf means we can use special characters to filter the window list in custom ways, and expose addition functionality.
+### Hotchars
 
-	=  show additional functionality
-	+  new window
-	$  new session
-	?  show help
-	*  only show current/home window
-	%  only show cut window
-	>  only show windows, no padding
-	@  only show unnamed windows
+Using fzf means we can use special characters to filter the list in custom ways:
+
+	  +   new window
+	  $   new session
+	  ?   show help
+	  =   only show actions
+	  *   only show current window
+	  #   only show active windows in other sessions
+	  |   only show cut window
+	  >   only show windows, no padding or 
+	  @   only show unnamed windows
 
 This will not work so well if you use special characters in window names. So don't do that, or do, but you have been warned.
 
 
-## Key bindings
+### Key bindings
 
-	esc      exit
+	  RETURN   Go to selected window
+	
+	  CTRL-]   Add a window, named with the search text
+	  CTRL-e   Rename selected window
+	  DELETE   Delete selected window
+	
+	  CTRL-x   Cut selected window
+	  CTRL-p   Paste the cut window
+	  CTRL-t   Take active window and put it next to selected window
+	  CTRL-g   Grab selected window and pull it next to active window
+	
+	  CTRL-l   Clear search text and reset
+	  CTRL-w   Wipe search text
+	
+	  CTRL-r   Reload list of windows (use if renames don't show)
+	  CTRL-f   Refresh the overview of panes
+	
+	  ESCAPE   Exit
 
-	enter    switch to window
-	ctrl-x	 cut window 
-	ctrl-p   paste window (or marked pane)
-
-	tab        select a pane
-	shift-tab  un/mark pane
-
-	ctrl-g   grab window 
-	ctrl-t   transport home window
-
-	ctrl-]   add a window, named with the contents of the query string
-	ctrl-l   reset everything
-	ctrl-f   refresh preview
-	ctrl-r   refresh list
-	ctrl-/   vim motion
-
-	del      delete window
 
 Most readline bindings (eg. ctrl-a/ctrl-e beginning/end of line) are also available.
 
-## Options
+<!-- ## Options -->
 
-### TODO
+<!-- ### TODO -->
 
--	escape_exits = true
--	use_unicode = true
--	session_divs = true
--   histograms = true
--	-v force vertical
+<!-- -	escape_exits = true -->
+<!-- -	use_unicode = true -->
+<!-- -	session_divs = true -->
+<!-- -   histograms = true -->
+<!-- -	-v force vertical -->
+
 
 
 ## Works well with
 
-- tmux-resurrect
-- extrakto
+- [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+- [extrakto](https://github.com/laktak/extrakto)
 
-## Dependencies
-
-- tmux
-- fzf
-- awk
 
