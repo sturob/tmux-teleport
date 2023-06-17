@@ -67,6 +67,9 @@ panes=$(tmux list-panes -t "@$window_id" -F "#{pane_id} #{pane_current_command} 
 	                                         #{pane_width} #{pane_pid} #{pane_tty} #{pane_active} \
 	                                         #{pane_title} #{pane_height} #{pane_marked} \
 											 #{pane_current_path}")
+type pstree > /dev/null
+HAVE_PSTREE=$?
+
 									
 # default_title=$(hostname -s)
 TTY_BG="$(tput setab 16)"
@@ -141,7 +144,12 @@ $RESET$pane_bottom"
 
 	# context line
 	echo -n "    $BLUE$path$RESET "
-	pstree $pid | sed "s/^/ /" # | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
+	width=${#path}
+	if [ $HAVE_PSTREE -eq 0 ]; then 
+		pstree $pid | head -1
+		pad=$(printf "%${width}s")
+		pstree $pid | tail -n +2 | sed "s/^/     $pad/g"
+	fi
 	echo
 
 	# echo # "       $cmd  $pid  "
