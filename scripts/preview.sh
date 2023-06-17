@@ -23,7 +23,7 @@ $RESET
 	DELETE   Delete $UNDERLINE""selected window$RESET
 
 	CTRL-x   Cut $UNDERLINE""selected window$RESET 
-	CTRL-p   Paste the $RED""cut window ✂ ✂ ✂$RESET
+	CTRL-p   Paste the $RED""✂  cut window$RESET
 	CTRL-t   Take $ORANGE""active window$RESET and put it next to $UNDERLINE""selected window$RESET
 	CTRL-g   Grab $UNDERLINE""selected window$RESET and pull it next to $ORANGE""active window$RESET 
 

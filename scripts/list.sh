@@ -1,14 +1,10 @@
 #!/bin/bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 source "$CURRENT_DIR/_colors.sh"
-
-
 
 this_window_id=$(tmux display-message -p '#{window_id}')
 this_session_id=$(tmux display-message -p '#{session_id}')
-
 cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '{print $2}')
 
 print_windows() {
@@ -17,8 +13,6 @@ print_windows() {
 	local first=1
 	while IFS= read -r window; do
 		read -r session_id id index panes_n active last marked linked_n name <<< "$window"
-		echo -n $RESET
-
 		window_color="$WHITE"
 		session_color="$GREY"
 		soft="$GREY"
@@ -30,25 +24,24 @@ print_windows() {
 		tmp_session="$session"
 		pointer=""
 		id_color="$BLACK"
+		star=" "
 		# id_color="$WHITE"
 
+		# no name
 		if [ ! -n "$name" ]; then
-			name="$index$GREY$id"
+			name="$index $GREY$id"
 		fi
 
-		# is cut
-		if [ "$id" == "@$cut_window_id" ]; then
-			star="$WHITE✂ "
-			session_color="$BLACK"
-			message=" $RED✂ ✂ ✂ "
-			window_color="$GREY"
-		else
-			star=" "
+		# is home (in other session)
+		if [ "$active" -eq 1 ]; then
+			star="$BLACK#"
+			div="$ORANGE>"
+			# session_color="$WHITE"
 		fi
-		
+
 		# is home
 		if [[ "$active" == '1' && "$session_id" == "$this_session_id" ]]; then
-			# star="$WHITE*"
+			star="*"
 			# "⌂" "►" "▉" "⟩" " " "●" "▶"
 			div="$ORANGE>"
 			half_background="$ORANGE_BG"
@@ -57,10 +50,13 @@ print_windows() {
 			session_color="$WHITE"
 		fi
 
-		# is home (in other session)
-		if [ "$active" -eq 1 ]; then
-			div="$ORANGE>"
-			# session_color="$WHITE"
+		# is cut
+		if [ "$id" == "@$cut_window_id" ]; then
+			# star="|"
+			session_color="$BLACK"
+			name="$RED✂  $name $RESET"
+			div="|"
+			window_color="$GREY"
 		fi
 
 		# is first line of each session
@@ -86,7 +82,7 @@ print_windows() {
 		if [ "$linked_n" -eq 1 ]; then
 			linked_n=''
 		fi
-		main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name $linked_n$marked_marker"
+		main_column="$session_color$tmp_session$soft $RESET$div $full_background$window_color$name$star$linked_n$marked_marker"
 
 		dashes=""
 		for ((i=1; i<=panes_n; i++)); do
@@ -95,7 +91,7 @@ print_windows() {
 		count_column="$dashes"
 		# count_column="$n" # TODO option
 			
-		echo "$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column  $message                                      $RESET"
+		echo "$RESET$full_background$half_background$id_column$RESET$home_indicator$pointer $main_column $soft$count_column                                      "
 		# num2braille.sh $n
 	done <<< "$windows"
 }
