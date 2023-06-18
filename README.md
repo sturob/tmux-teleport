@@ -59,7 +59,7 @@ You should now be able to use the plugin.
 
 ## How it works
 
-Launch using alt-/ (or prefix-T)
+Launch using alt-/ (or prefix-\*)
 
 Enter a search query to filter the list of windows and actions. Use up+down keys to select one.
 
