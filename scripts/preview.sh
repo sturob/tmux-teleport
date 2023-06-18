@@ -21,7 +21,7 @@ $RESET
 	RETURN   Go to $UNDERLINE""selected window$RESET
 
 	CTRL-n   New window, named with the search text
-	CTRL-e   Rename $UNDERLINE""selected window$RESET 
+	CTRL-\   Rename $UNDERLINE""selected window$RESET 
 	DELETE   Delete $UNDERLINE""selected window$RESET
 
 	CTRL-o   Cut $UNDERLINE""selected window$RESET 

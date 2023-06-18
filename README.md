@@ -110,13 +110,13 @@ This will not work so well if you use special characters in window names. So don
 	  RETURN   Go to selected window
 	
 	  CTRL-n   New window, named with the search text
-	  CTRL-e   Rename selected window
+	  CTRL-\   Rename selected window
 	  DELETE   Delete selected window
 	
-	  CTRL-x   Cut selected window
-	  CTRL-p   Paste the cut window
-	  CTRL-t   Take active window and put it next to selected window
+	  CTRL-o   Cut selected window
+	  CTRL-p   Paste cut window
 	  CTRL-g   Grab selected window and pull it next to active window
+	  CTRL-t   Throw active window next to selected window
 	
 	  CTRL-l   Clear search text and reset
 	  CTRL-w   Wipe search text
