@@ -10,18 +10,18 @@ A better way to manage tmux windows, sessions, and panes.
 - Easily move windows
 - A useful overview of all windows and sessions
 - Create new windows and sessions
-- Find un-named windows
+- Find unnamed windows
 - Delete and rename windows
 
 
 ## Objectives
 
-- Informationally rich but not overwhelming
-- Be easy to learn, with discoverable functionality
 - One hotkey + zero config needed
 - Promote muscle-memory + maximize flow
+- Informationally rich but not overwhelming
+- Easy to learn, discoverable functionality where possible
 - Handle a large number of windows
-- Promote window naming but support unnamed windows
+- Promote naming but support unnamed windows and sessions
 
 
 ## Dependencies
@@ -59,7 +59,7 @@ You should now be able to use the plugin.
 
 ## How it works
 
-Launch using alt-/ (or prefix-\*)
+Launch using ALT-/ (or prefix-\*)
 
 Enter a search query to filter the list of windows and actions. Use up+down keys to select one.
 
@@ -70,9 +70,9 @@ See [Key Bindings](#key-bindings) for actions that can be performed on a selecte
 
 There are two ways to create a new window:
 
-1. at any time, hit ctrl-] to create a new window named after your search query
+1. Hit CTRL-n to create a new window named using your search query
 
-2. hit return immediately after launch
+2. Hit RETURN immediately after launch
 
 When using the latter, tmux will inject 'tmux rename-window ;' into the new window. This is not a bug. It's intended to make it as easy as possible to rename the new window (delete the ; and enter a name), but gets out of the way if you want to enter a blind command.
 
@@ -81,11 +81,11 @@ When using the latter, tmux will inject 'tmux rename-window ;' into the new wind
 
 There are three ways to move windows:
 
-1. Cut and paste. ctrl-x cuts, ctrl-p pastes.
+1. Cut and paste. CTRL-x cuts, CTRL-p pastes. Paste to the 'new session' action to move the window to a new session.
 
-2. Teleport. This is for when you are working in a window (the current window) and realize it should be in a different session. Select the target window you want to move your current window next to and hit ctrl-t.
+2. Throw. This is for when you are working in a window (the current window) and realize it should be in a different location. Select the target window you want your current window to be next to and hit CTRL-t. You can throw to a new session.
 
-3. Grab. Say there's a window elsewhere that should be next to your current window. Select it and hit ctrl-g.
+3. Grab. Imagine there is a window elsewhere but it should be next to your current window. Select it and hit CTRL-g.
 
 
 ### Hotchars
@@ -109,7 +109,7 @@ This will not work so well if you use special characters in window names. So don
 
 	  RETURN   Go to selected window
 	
-	  CTRL-]   Add a window, named with the search text
+	  CTRL-n   New window, named with the search text
 	  CTRL-e   Rename selected window
 	  DELETE   Delete selected window
 	
@@ -127,7 +127,7 @@ This will not work so well if you use special characters in window names. So don
 	  ESCAPE   Exit
 
 
-Most readline bindings (eg. ctrl-a/ctrl-e beginning/end of line) are also available.
+Most readline bindings (eg. CTRL-a/CTRL-e beginning/end of line) are also available.
 
 <!-- ## Options -->
 

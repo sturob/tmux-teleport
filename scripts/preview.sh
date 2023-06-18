@@ -20,14 +20,14 @@ $RESET
 
 	RETURN   Go to $UNDERLINE""selected window$RESET
 
-	CTRL-]   Add a window, named with the search text
+	CTRL-n   New window, named with the search text
 	CTRL-e   Rename $UNDERLINE""selected window$RESET 
 	DELETE   Delete $UNDERLINE""selected window$RESET
 
 	CTRL-x   Cut $UNDERLINE""selected window$RESET 
 	CTRL-p   Paste the $RED""✂  cut window$RESET
-	CTRL-t   Take $ORANGE""active window$RESET and put it next to $UNDERLINE""selected window$RESET
 	CTRL-g   Grab $UNDERLINE""selected window$RESET and pull it next to $ORANGE""active window$RESET 
+	CTRL-t   Throw $ORANGE""active window$RESET next to $UNDERLINE""selected window$RESET
 
 	CTRL-l   Clear search text and reset
 	CTRL-w   Wipe search text
