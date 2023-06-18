@@ -2,12 +2,6 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-FZF_VERSION=$(fzf --version | cut -d ' ' -f 1)
-FZF_VERSION_NUMBER=$(echo "$FZF_VERSION" | cut -d '.' -f 2)
-
-width=$(tput cols)
-P_WIDTH=$(echo "$width-55" | bc)
-
 BASE="$CURRENT_DIR"
 LIST_CMD="$CURRENT_DIR/list-buffered.sh"
 
@@ -15,38 +9,37 @@ TMP="/tmp/tmux-teleport.tmp"
 
 tmux set-environment -u -g cut_window_id
 
-if [[ "$FZF_VERSION_NUMBER" -lt "24" ]]; then
-	echo a newer fzf is required 
-else
-	fzf_output=$( $BASE/list.sh \
-	    | fzf --preview-window="right:$P_WIDTH:rounded" \
-	          --prompt="> " \
-			  --info=hidden \
-			  --tiebreak=index \
-			  --layout=reverse \
-			  --tabstop=4 \
-			  --nth=2.. \
-			  --ansi \
-	          --preview "$BASE/"'preview-buffered.sh {}' \
-			  --bind "ctrl-x:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
-			  --bind "ctrl-t:execute($BASE/window-transport.sh {})+reload(eval $LIST_CMD)+clear-query" \
-			  --bind "ctrl-n:execute-silent($BASE/window-new.sh {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-		      --bind "tab:execute-silent($BASE/pane-cycle-next.sh {})+refresh-preview" \
-			  --bind "btab:execute-silent($BASE/pane-mark.sh {})+refresh-preview" \
-			  --bind "ctrl-e:execute-silent($BASE/window-rename.sh {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-			  --bind "ctrl-r:execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
-	          --bind "ctrl-f:refresh-preview" \
-	          --bind "ctrl-l:clear-query+top+clear-screen" \
-			  --bind "ctrl-z:ignore" \
-			  --bind "del:clear-screen+execute-silent($BASE/window-delete.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
-              --bind "backward-eof:top" \
-	          --bind "home:top" \
-			  --bind "end:page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down" \
-	          --bind "ctrl-/:jump" \
-		  )
-fi
+width=$(tput cols)
+P_WIDTH=$(echo "$width-55" | bc)
+
+fzf_output=$( $BASE/list.sh | \
+	fzf --preview-window="right:$P_WIDTH:rounded" \
+	    --prompt="> " \
+		--info=hidden \
+		--tiebreak=index \
+		--layout=reverse \
+		--tabstop=4 \
+		--nth=2.. \
+		--ansi \
+		--preview "$BASE/"'preview-buffered.sh {}' \
+		--bind "ctrl-x:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		--bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		--bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
+		--bind "ctrl-t:execute-silent($BASE/window-transport.sh {})+reload(eval $LIST_CMD)+clear-query" \
+		--bind "ctrl-n:execute-silent($BASE/window-new.sh {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		--bind "tab:execute-silent($BASE/pane-cycle-next.sh {})+refresh-preview" \
+		--bind "btab:execute-silent($BASE/pane-mark.sh {})+refresh-preview" \
+		--bind "ctrl-e:execute-silent($BASE/window-rename.sh {})+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		--bind "ctrl-r:execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)"\
+		--bind "ctrl-f:refresh-preview" \
+		--bind "ctrl-l:clear-query+top+clear-screen" \
+		--bind "ctrl-z:ignore" \
+		--bind "del:clear-screen+execute-silent($BASE/window-delete.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		--bind "backward-eof:top" \
+		--bind "home:top" \
+		--bind "end:page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down+page-down" \
+		--bind "ctrl-/:jump" \
+)
 
 first_col=$(echo $fzf_output | awk '{print $3}');
 
