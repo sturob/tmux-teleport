@@ -24,15 +24,15 @@ $RESET
 	CTRL-e   Rename $UNDERLINE""selected window$RESET 
 	DELETE   Delete $UNDERLINE""selected window$RESET
 
-	CTRL-p   Paste the $RED""✂  cut window$RESET
 	CTRL-o   Cut $UNDERLINE""selected window$RESET 
+	CTRL-p   Paste $RED""cut window$RESET
 	CTRL-g   Grab $UNDERLINE""selected window$RESET and pull it next to $ORANGE""active window$RESET 
 	CTRL-t   Throw $ORANGE""active window$RESET next to $UNDERLINE""selected window$RESET
 
 	CTRL-l   Clear search text and reset
-	CTRL-w   Wipe search text
+	CTRL-w   Wipe last word of search text
 
-	CTRL-r   Reload list of windows $GREY(use if renames don't show)$RESET
+	CTRL-r   Reload list of windows $GREY(use if renames/deletes don't show)$RESET
 	CTRL-f   Refresh the overview of panes
 
 	ESCAPE   Exit
