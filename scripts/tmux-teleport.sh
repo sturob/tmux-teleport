@@ -60,7 +60,7 @@ if [[ $first_col == '+' ]]; then
 fi
 
 if [[ $first_col == '?' ]]; then
-	garcon-url-handler "https://github.com/sturob/tmux-teleport"
+	$CURRENT_DIR/open-url.sh "https://github.com/sturob/tmux-teleport"
 	exit
 fi
 
