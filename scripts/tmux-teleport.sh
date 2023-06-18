@@ -22,7 +22,7 @@ fzf_output=$( $BASE/list.sh | \
 		--nth=2.. \
 		--ansi \
 		--preview "$BASE/"'preview-buffered.sh {}' \
-		--bind "ctrl-x:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
+		--bind "ctrl-o:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
 		--bind "ctrl-t:execute-silent($BASE/window-transport.sh {})+reload(eval $LIST_CMD)+clear-query" \
