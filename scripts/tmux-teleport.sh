@@ -18,7 +18,7 @@ tmux set-environment -u -g cut_window_id
 if [[ "$FZF_VERSION_NUMBER" -lt "24" ]]; then
 	echo a newer fzf is required 
 else
-	fzf_output=$( $BASE/list-buffered.sh \
+	fzf_output=$( $BASE/list.sh \
 	    | fzf --preview-window="right:$P_WIDTH:rounded" \
 	          --prompt="> " \
 			  --info=hidden \

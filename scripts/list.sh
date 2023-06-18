@@ -3,6 +3,9 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/_colors.sh"
 
+# TODO make this load even earlier
+echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE+ new window"
+
 this_window_id=$(tmux display-message -p '#{window_id}')
 this_session_id=$(tmux display-message -p '#{session_id}')
 cut_window_id=$(tmux show-environment -g cut_window_id 2>/dev/null| awk -F "=" '{print $2}')
