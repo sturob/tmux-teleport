@@ -3,7 +3,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/_colors.sh"
 
-LC_CTYPE=C && LANG=C # fix sed on bsd
+LC_CTYPE=C # workaround for "sed: RE error: illegal byte sequence" error on macOS
 
 __help="$GREY                                    ▗▄▖
   ▐▌                       ▐▌       ▝▜▌                       ▐▌
