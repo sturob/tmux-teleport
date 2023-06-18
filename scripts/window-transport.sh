@@ -39,3 +39,9 @@ $CURRENT_DIR/window-move.sh $src_window_id_raw $target_index $target_session_nam
 tmux select-window -t "$current_window_id"
 tmux switch-client -t "$target_session_name"
 
+# bug on old tmuxes means we lose zoom on move sometimes
+is_zoomed=$(tmux display-message -p '#{window_zoomed_flag}')
+
+if [ ! $is_zoomed -eq 1 ]; then
+	tmux resize-pane -Z
+fi

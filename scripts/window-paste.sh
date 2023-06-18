@@ -38,3 +38,10 @@ if [[ "$src_id" == "$current_window_id" && "$this_session" != "$target_session" 
 	tmux select-window -t "$current_window_id"
 	tmux switch-client -t "$target_session"
 fi
+
+# bug on old tmuxes means we lose zoom on move sometimes
+is_zoomed=$(tmux display-message -p '#{window_zoomed_flag}')
+
+if [ ! $is_zoomed -eq 1 ]; then
+	tmux resize-pane -Z
+fi
