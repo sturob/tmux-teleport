@@ -59,7 +59,7 @@ You should now be able to use the plugin.
 
 ## How it works
 
-Launch using ALT-/ (or prefix-\*)
+Launch using ALT-/ (or prefix-g). For iTerm2 users [activating the alt key](https://stephencharlesweiss.com/i-term-2-meta-key) is strongly recommended. 
 
 Enter a search query to filter the list of windows and actions. Use up+down keys to select one.
 
