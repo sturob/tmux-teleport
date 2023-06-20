@@ -99,7 +99,7 @@ Using fzf means we can use special characters to filter the list in custom ways:
 	  *   only show current window
 	  #   only show active windows in other sessions
 	  |   only show cut window
-	  >   only show windows, no padding or 
+	  >   only show windows, no padding or actions
 	  @   only show unnamed windows
 
 This will not work so well if you use special characters in window names. So don't do that, or do, but you have been warned.
