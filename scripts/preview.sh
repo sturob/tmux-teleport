@@ -14,11 +14,13 @@ __help="$GREY                                    ▗▄▖
    ▀▀ ▝▘▀▝▘ ▀▀▝▘▝▀ ▀▘       ▀▀  ▝▀▀   ▀▀  ▝▀▀ ▐▌▀▘  ▝▀▘  ▀     ▀▀
        v0.2                                   ▐▌
 $RESET
-  Enter search text to filter the list of windows and actions. 
+
+  Enter text to filter the list of windows and actions. 
+
 
   Use the up/down keys to select one, then hit:
 
-	RETURN   Go to $UNDERLINE""selected window$RESET
+	RETURN   Go to $UNDERLINE""selected window$RESET or run $BLUE""action$RESET
 
 	CTRL-n   New window, named with the search text
 	CTRL-\   Rename $UNDERLINE""selected window$RESET 
@@ -38,7 +40,7 @@ $RESET
 	ESCAPE   Exit
 
 
-        $GREEN""Press CTRL-w (or backspace) to leave this screen
+  $GREEN""Press CTRL-w (or backspace) to leave this screen
 "
 # tab         Select next pane
 # shift-tab   Mark selected pane
