@@ -31,6 +31,29 @@ A better way to manage tmux windows, sessions, and panes.
 - pstree (if you want detailed pane process information)
 - awk + sed
 
+## Key bindings
+
+	  RETURN   Go to selected window or run action
+	
+	  CTRL-n   New window, named with the search text
+	  CTRL-\   Rename selected window
+	  DELETE   Delete selected window
+	
+	  CTRL-o   Cut selected window
+	  CTRL-p   Paste cut window
+	  CTRL-g   Grab selected window and pull it next to active window
+	  CTRL-t   Throw active window next to selected window
+	
+	  CTRL-l   Clear search text and reset
+	  CTRL-w   Wipe search text
+	
+	  CTRL-r   Reload list of windows (use if renames don't show)
+	  CTRL-f   Refresh the overview of panes
+	
+	  ESCAPE   Exit
+
+
+Most readline bindings (eg. CTRL-a/CTRL-e beginning/end of line) are also available.
 
 ## Installation
 
@@ -104,30 +127,6 @@ Using fzf means we can use special characters to filter the list in custom ways:
 
 This will not work so well if you use special characters in window names. So don't do that, or do, but you have been warned.
 
-
-### Key bindings
-
-	  RETURN   Go to selected window or run action
-	
-	  CTRL-n   New window, named with the search text
-	  CTRL-\   Rename selected window
-	  DELETE   Delete selected window
-	
-	  CTRL-o   Cut selected window
-	  CTRL-p   Paste cut window
-	  CTRL-g   Grab selected window and pull it next to active window
-	  CTRL-t   Throw active window next to selected window
-	
-	  CTRL-l   Clear search text and reset
-	  CTRL-w   Wipe search text
-	
-	  CTRL-r   Reload list of windows (use if renames don't show)
-	  CTRL-f   Refresh the overview of panes
-	
-	  ESCAPE   Exit
-
-
-Most readline bindings (eg. CTRL-a/CTRL-e beginning/end of line) are also available.
 
 <!-- ## Options -->
 
