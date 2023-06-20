@@ -61,9 +61,9 @@ You should now be able to use the plugin.
 
 Launch using ALT-/ (or prefix-g). For iTerm2 users [activating the alt key](https://stephencharlesweiss.com/i-term-2-meta-key) is strongly recommended. 
 
-Enter a search query to filter the list of windows and actions. Use up+down keys to select one.
+Enter some text to filter the list of windows and actions. Use up+down keys to select one.
 
-See [Key Bindings](#key-bindings) for actions that can be performed on a selected window.
+See [Key Bindings](#key-bindings) for the commands that can be performed on a selected window.
 
 
 ### Creating new windows
@@ -74,7 +74,7 @@ There are two ways to create a new window:
 
 2. Hit RETURN immediately after launch
 
-When using the latter, tmux will inject 'tmux rename-window ;' into the new window. This is not a bug. It's intended to make it as easy as possible to rename the new window (delete the ; and enter a name), but gets out of the way if you want to enter a blind command.
+When using the latter, tmux will inject 'tmux rename-window ;' into the new window. This is not a bug. It's intended to make it as easy as possible to rename the new window (delete the ; and enter a name), but gets out of the way if you want to enter a command instantly.
 
 
 ### Moving windows
@@ -83,9 +83,9 @@ There are three ways to move windows:
 
 1. Cut and paste. CTRL-x cuts, CTRL-p pastes. Paste to the 'new session' action to move the window to a new session.
 
-2. Throw. This is for when you are working in a window (the current window) and realize it should be in a different location. Select the target window you want your current window to be next to and hit CTRL-t. You can throw to a new session.
+2. Throw. This is for when you realise the window you are working in should be in a different location. Select a window you want your current window to be next to and hit CTRL-t. You can throw to the 'new session' action, this will create a new session.
 
-3. Grab. Imagine there is a window elsewhere but it should be next to your current window. Select it and hit CTRL-g.
+3. Grab. Say there is a window elsewhere but it should be next to your current window. Select it and hit CTRL-g.
 
 
 ### Hotchars
@@ -107,7 +107,7 @@ This will not work so well if you use special characters in window names. So don
 
 ### Key bindings
 
-	  RETURN   Go to selected window
+	  RETURN   Go to selected window or run action
 	
 	  CTRL-n   New window, named with the search text
 	  CTRL-\   Rename selected window
