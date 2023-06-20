@@ -2,7 +2,7 @@
 
 A better way to manage tmux windows, sessions, and panes.
 
-<img width="400px" src="https://raw.githubusercontent.com/sturob/tmux-teleport-docs/main/blank.png">
+<img width="800px" src="https://raw.githubusercontent.com/sturob/tmux-teleport-docs/main/blank.png">
 
 ## Functionality
 
