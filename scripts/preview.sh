@@ -49,8 +49,8 @@ $RESET
 
 # ${GREYLIGHT_BG}window$RESET = the window selected on the left
 
-window_id=$(echo $1 | awk '{print $1}')
-window_name=$(echo $1 | awk '{print $4}')
+window_id=$(echo "$1" | awk '{print $1}')
+window_name=$(echo "$1" | awk '{print $4}')
 
 case "$1" in
 	*help)
@@ -61,7 +61,7 @@ esac
 
 if [[ ! $window_id =~ ^-?[0-9]+$ ]]; then
 	sleep 0.25
-	$CURRENT_DIR/center.sh
+	"$CURRENT_DIR"/center.sh
 	exit
 fi
 
@@ -72,27 +72,26 @@ panes=$(tmux list-panes -t "@$window_id" -F "#{pane_id} #{pane_current_command} 
 type pstree > /dev/null
 HAVE_PSTREE=$?
 
-									
 # default_title=$(hostname -s)
-TTY_BG="$(tput setab 16)"
 
 pane_bf="$BLACK_BG$GREY" # dynamically changed
 pane_border_bf="$BLACK_BG$GREY" # dynamically changed
 
-lchar='│'
+# lchar='│'
+# linechars="─"
 tlchar='┌'; trchar='┐'
-linechars="─"
 blchar='└'; brchar='┘'
 lmargin='   '
+
 echo
 
 i=0
 while IFS= read -r pane; do
 	read -r id cmd w pid tty active title h is_marked path <<< "$pane"
 	raw_id="${id:1}"
-	full_width=$(($w-1))
-	padded_width=$(($full_width+1))
-	h=$(echo $HOME | sed 's|/|\\/|g') 
+	full_width=$((w-1))
+	padded_width=$((full_width+1))
+	h=$(echo "$HOME" | sed 's|/|\\/|g') 
 	path=$(echo "$path" | sed "s/$h/~/")
 
 	i=$((i+1)) 
@@ -108,7 +107,7 @@ while IFS= read -r pane; do
 
 	# top border
 	echo -n "  $pane_border_bf$tlchar"
-	printf "─%.0s" $(seq 1 $(($padded_width)))
+	printf "─%.0s" $(seq 1 $((padded_width)))
 	echo "$trchar$RESET"
 
 	pane_contents=$(tmux capture-pane -p -N -t "$id") # -e for color, broken: can't filter out $RESET
@@ -116,7 +115,7 @@ while IFS= read -r pane; do
 
 	if [[ $pane_lines_uniq_n -lt 10 ]]; then
 		echo "$pane_contents" | uniq \
-			| $CURRENT_DIR/pad.sh $full_width \
+			| "$CURRENT_DIR"/pad.sh $full_width \
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/$pane_border_bf│$RESET/"
 	else
@@ -124,14 +123,14 @@ while IFS= read -r pane; do
 		lines_per_half=$((-1 + (pane_lines_n + 1) / 2 ))
 
 		pane_top=$(echo "$pane_contents" | uniq | head -$lines_per_half | head -5 \
-			| $CURRENT_DIR/pad.sh $full_width \
+			| "$CURRENT_DIR"/pad.sh $full_width \
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/│$RESET/")
 		pane_bottom=$(echo "$pane_contents" | uniq | tail -$lines_per_half | tail -5 \
-			| $CURRENT_DIR/pad.sh $full_width \
+			| "$CURRENT_DIR"/pad.sh $full_width \
 			| sed  "s/^/  $pane_border_bf│ /" \
 			| sed "s/$/│$RESET/")
-		divider_tiles=$(printf "~%.0s" $(seq 1 $(($padded_width))))
+		divider_tiles=$(printf "~%.0s" $(seq 1 $((padded_width))))
 		pane_divider="  $pane_border_bf┆$GREY$divider_tiles$pane_border_bf┆"
 
 		echo "$pane_top
@@ -141,16 +140,16 @@ $RESET$pane_bottom"
 
 	# bottom border
 	echo -n "  $pane_border_bf$blchar"
-	printf "─%.0s" $(seq 1 $(($padded_width)))
+	printf "─%.0s" $(seq 1 $((padded_width)))
 	echo "$brchar$RESET"
 
 	# context line
 	echo -n "    $BLUE$path$RESET "
 	width=${#path}
 	if [ $HAVE_PSTREE -eq 0 ]; then 
-		pstree $pid | head -1
+		pstree "$pid" | head -1
 		pad=$(printf "%${width}s")
-		pstree $pid | tail -n +2 | sed "s/^/     $pad/g"
+		pstree "$pid" | tail -n +2 | sed "s/^/     $pad/g"
 	fi
 	echo
 
