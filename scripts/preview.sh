@@ -20,16 +20,16 @@ $RESET
 
   Use the up/down keys to select, and then hit:
 
-	RETURN   Go to $UNDERLINE""selected window$RESET or run $BLUE""action$RESET
+	RETURN   Go to ${UNDERLINE}selected window$RESET or run ${BLUE}action$RESET
 
 	CTRL-n   New window, named with the search text
-	CTRL-\   Rename $UNDERLINE""selected window$RESET 
-	DELETE   Delete $UNDERLINE""selected window$RESET
+	CTRL-\   Rename ${UNDERLINE}selected window$RESET 
+	DELETE   Delete ${UNDERLINE}selected window$RESET
 
-	CTRL-o   Cut $UNDERLINE""selected window$RESET 
-	CTRL-p   Paste $RED""cut window$RESET
-	CTRL-g   Grab $UNDERLINE""selected window$RESET and pull it next to $ORANGE""active window$RESET 
-	CTRL-t   Throw $ORANGE""active window$RESET next to $UNDERLINE""selected window$RESET
+	CTRL-o   Cut ${UNDERLINE}selected window$RESET 
+	CTRL-p   Paste ${RED}cut window$RESET
+	CTRL-g   Grab ${UNDERLINE}selected window$RESET and pull it next to ${ORANGE}active window$RESET 
+	CTRL-t   Throw ${ORANGE}active window$RESET next to ${UNDERLINE}selected window$RESET
 
 	CTRL-l   Clear search text and reset
 	CTRL-w   Wipe last word of search text
@@ -40,14 +40,14 @@ $RESET
 	ESCAPE   Exit
 
 
-  $GREEN""Press CTRL-w (or backspace) to leave this screen
+  ${GREEN}Press CTRL-w (or backspace) to leave this screen
 "
 # tab         Select next pane
 # shift-tab   Mark selected pane
 
 # $ORANGE home window$RESET = the window you were in when you launched tmux-teleport
 
-# $GREYLIGHT_BG""window$RESET = the window selected on the left
+# ${GREYLIGHT_BG}window$RESET = the window selected on the left
 
 window_id=$(echo $1 | awk '{print $1}')
 window_name=$(echo $1 | awk '{print $4}')
