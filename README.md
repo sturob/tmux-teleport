@@ -26,6 +26,7 @@ A better way to manage tmux windows, sessions, and panes.
 
 ## Dependencies
 
+- bash
 - [tmux](https://github.com/tmux/tmux)
 - [fzf](https://github.com/junegunn/fzf)
 - pstree (if you want detailed pane process information)
