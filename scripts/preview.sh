@@ -12,13 +12,13 @@ __help="$GREY                                    ▗▄▖
   ▐▌  ▐▌█▐▌▐▌ ▐▌ ▗█▖  ██▌  ▐▌  ▐▛▀▀▘ ▐▌  ▐▛▀▀▘▐▌ ▐▌▐▌ ▐▌ █    ▐▌
   ▐▙▄ ▐▌█▐▌▐▙▄█▌ ▟▀▙       ▐▙▄ ▝█▄▄▌ ▐▙▄ ▝█▄▄▌▐█▄█▘▝█▄█▘ █    ▐▙▄
    ▀▀ ▝▘▀▝▘ ▀▀▝▘▝▀ ▀▘       ▀▀  ▝▀▀   ▀▀  ▝▀▀ ▐▌▀▘  ▝▀▘  ▀     ▀▀
-       v0.3                                   ▐▌
+       v0.3.2                                 ▐▌
 $RESET
 
-  Enter text to filter the list of windows and actions. 
+  Enter some text to filter the list of windows and actions. 
 
 
-  Use the up/down keys to select one, then hit:
+  Use the up/down keys to select, and then hit:
 
 	RETURN   Go to $UNDERLINE""selected window$RESET or run $BLUE""action$RESET
 
