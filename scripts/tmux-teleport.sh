@@ -5,7 +5,11 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BASE="$CURRENT_DIR"
 LIST_CMD="$CURRENT_DIR/list-buffered.sh"
 
-TMP="/tmp/tmux-teleport.tmp"
+TMP=$(mktemp -t "srtt.XXXXXXXXX")
+function cleanup {
+	rm "$TMP"
+}
+trap cleanup EXIT
 
 tmux set-environment -u -g cut_window_id
 
@@ -25,7 +29,7 @@ fzf_output=$( $BASE/list.sh | \
 		--bind "ctrl-o:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
-		--bind "ctrl-t:execute-silent($BASE/window-transport.sh {})+reload(eval $LIST_CMD)+clear-query" \
+		--bind "ctrl-t:execute-silent($BASE/window-transport.sh {})+reload(eval $LIST_CMD)" \
 		--bind "ctrl-n:execute-silent($BASE/window-new.sh {q})+clear-query+execute($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "tab:execute-silent($BASE/pane-cycle-next.sh {})+refresh-preview" \
 		--bind "btab:execute-silent($BASE/pane-mark.sh {})+refresh-preview" \
