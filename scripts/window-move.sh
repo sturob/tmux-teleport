@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/usr/bin/env bash 
 # TODO
 # - fix renumbering tmux move-window -r or 'set -g renumber-windows off' off/on
 

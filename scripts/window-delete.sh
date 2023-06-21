@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 selected_window_id_raw=$(echo $1 | awk '{print $1}')
 
