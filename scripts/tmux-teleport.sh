@@ -16,7 +16,7 @@ tmux set-environment -u -g cut_window_id
 width=$(tput cols)
 P_WIDTH=$(echo "$width-55" | bc)
 
-fzf_output=$( $BASE/list.sh | \
+fzf_output=$( "$BASE/list.sh" | \
 	fzf --preview-window="right:$P_WIDTH:rounded" \
 	    --prompt="> " \
 		--info=hidden \
@@ -25,7 +25,7 @@ fzf_output=$( $BASE/list.sh | \
 		--tabstop=4 \
 		--nth=2.. \
 		--ansi \
-		--preview "$BASE/"'preview-buffered.sh {}' \
+		--preview "$BASE/preview-buffered.sh {}" \
 		--bind "ctrl-o:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "ctrl-p:execute-silent($BASE/window-paste.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
 		--bind "ctrl-g:execute-silent($BASE/window-grab.sh {})+reload(eval $LIST_CMD)" \
@@ -45,7 +45,7 @@ fzf_output=$( $BASE/list.sh | \
 		--bind "ctrl-/:jump" \
 )
 
-first_col=$(echo $fzf_output | awk '{print $3}');
+first_col=$(echo "$fzf_output" | awk '{print $3}');
 
 if [[ $first_col == '+' ]]; then
 	tmux new-window -c ~
@@ -57,7 +57,7 @@ if [[ $first_col == '+' ]]; then
 fi
 
 if [[ $first_col == '?' ]]; then
-	$CURRENT_DIR/open-url.sh "https://github.com/sturob/tmux-teleport"
+	"$CURRENT_DIR/open-url.sh" "https://github.com/sturob/tmux-teleport"
 	exit
 fi
 
@@ -71,7 +71,7 @@ if [[ $first_col == '$' ]]; then
  	exit
 fi
 
-id=$(echo $fzf_output | awk '{print $1}')
+id=$(echo "$fzf_output" | awk '{print $1}')
 
 # $2   session id 
 # @9   window id
@@ -79,16 +79,16 @@ id=$(echo $fzf_output | awk '{print $1}')
 
 if [ -n "$id" ]; then
 	window="$id"
-	current_session=$(tmux display-message -p -t "$pane_id" '#{session_id}')
-	session=$(tmux display-message -p -t "@$window" -F '#{session_id}')
+	current_session=$(tmux display-message -p '#{session_id}')
+	session_id=$(tmux display-message -p -t "@$window" -F '#{session_id}')
 
-	if [[ "$current_session" == "$session" ]]; then
+	if [[ "$current_session" == "$session_id" ]]; then
 		tmux set-environment back close
 		tmux select-window -t "@$window"
 	else
 		tmux set-environment back far
 		tmux select-window -t "@$window"
-		tmux switch-client -t $session
+		tmux switch-client -t $session_id
 	fi
 
 	# tmux run-shell -b 'highlight-current-pane.sh'
