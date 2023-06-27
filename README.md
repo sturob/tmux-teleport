@@ -1,6 +1,6 @@
 # tmux-teleport
 
-A better way to manage tmux windows, sessions, and panes.
+A better way to manage tmux windows and sessions.
 
 <img src="https://raw.githubusercontent.com/sturob/tmux-teleport-docs/main/shot-0.3.png">
 
