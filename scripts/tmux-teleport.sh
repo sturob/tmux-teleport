@@ -83,14 +83,11 @@ if [ -n "$id" ]; then
 	session_id=$(tmux display-message -p -t "@$window" -F '#{session_id}')
 
 	if [[ "$current_session" == "$session_id" ]]; then
-		tmux set-environment back close
 		tmux select-window -t "@$window"
 	else
-		tmux set-environment back far
 		tmux select-window -t "@$window"
 		tmux switch-client -t $session_id
 	fi
-
 	# tmux run-shell -b 'highlight-current-pane.sh'
 fi
 
