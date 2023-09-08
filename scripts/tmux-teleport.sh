@@ -24,6 +24,7 @@ fzf_output=$( "$BASE/list.sh" | \
 		--layout=reverse \
 		--tabstop=4 \
 		--nth=2.. \
+		--color hl:1,hl+:1 \
 		--ansi \
 		--preview "$BASE/preview-buffered.sh {}" \
 		--bind "ctrl-o:execute-silent($BASE/window-cut.sh {})+execute-silent($BASE/list-buffered.sh>$TMP)+reload(cat $TMP)" \
@@ -55,6 +56,10 @@ if [[ $first_col == '+' ]]; then
 	tmux send-keys C-l
 	exit
 fi
+
+# if [[ $first_col == '/' ]]; then
+# 	exit
+# fi
 
 if [[ $first_col == '?' ]]; then
 	"$CURRENT_DIR/open-url.sh" "https://github.com/sturob/tmux-teleport"

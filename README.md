@@ -112,7 +112,7 @@ There are three ways to move windows:
 3. Grab. Say there is a window elsewhere but it should be next to your current window. Select it and hit CTRL-g.
 
 
-### Hotchars
+### HotChars
 
 Using fzf means we can use special characters to filter the list in custom ways:
 
@@ -140,10 +140,7 @@ This will not work so well if you use special characters in window names. So don
 <!-- -	-v force vertical -->
 
 
-
 ## Works well with
 
 - [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
 - [extrakto](https://github.com/laktak/extrakto)
-
-

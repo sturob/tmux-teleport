@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+BLACK=$'\033[0;30m'
+BLUE=$'\033[0;34m'
+
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/_colors.sh"
 
-# TODO make this load even earlier
-echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE+ new window"
+echo "$INVISIBLE_BRAILLE$BLACK = $BLUE + new window"
+
 
 this_window_id=$(tmux display-message -p '#{window_id}')
 this_session_id=$(tmux display-message -p '#{session_id}')
@@ -109,6 +113,7 @@ tmux list-sessions -F '#{session_name}' | while read -r session; do
 done
 
 echo
+echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE/ search panes..."
 echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE$ new session"
 echo
 echo "$INVISIBLE_BRAILLE$BLACK =  $BLUE? help"
