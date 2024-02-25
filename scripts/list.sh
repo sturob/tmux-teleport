@@ -68,7 +68,7 @@ print_windows() {
 
 		# is first line of each session
 		if [ "$first" -eq 1 ]; then
-			echo # no empty lines
+			echo # "     $BLACK$session"
 		fi
 
 		first=0
