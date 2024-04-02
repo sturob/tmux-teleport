@@ -29,7 +29,7 @@ else
 	if tmux move-window -d -s "$src_id" -t $target_session:$((target_index+1)) 2>>$LOG; then
 	 	echo there was a gap, move ok >> $LOG
 		tmux select-window -t "$current_window_id" >> $LOG # and then back to teleport
-	 else
+	else
 		# find first free slot
 		gap=$(tmux list-windows -F "#{window_index}" | $CURRENT_DIR/first-gap.sh $target_index)
 		# if pos > target+1 iterate back moving each window forward 1
