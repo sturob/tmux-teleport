@@ -15,32 +15,27 @@ __help="$GREY                                    ▗▄▖
        v0.3.3                                 ▐▌
 $RESET
 
-  Enter some text to filter the list of windows and actions. 
+	return   Go to ${GREY_BG}window$RESET or run ${BLUE}action$RESET
+
+	ctrl n   New window, named with the search text
+	ctrl \   Rename ${GREY_BG}window$RESET 
+	delete   Delete ${GREY_BG}window$RESET
+
+	ctrl o   Cut ${GREY_BG}window$RESET 
+	ctrl p   Paste the ${RED}cut window$RESET
+	ctrl g   Grab ${GREY_BG}window$RESET and pull it next to the ${ORANGE}current window$RESET 
+	ctrl t   Throw the ${ORANGE}current window$RESET next to ${GREY_BG}window$RESET
+
+	ctrl l   Clear search text and reset selection
+	ctrl w   Delete last word of search text
+
+	ctrl f   Refresh ${GREY_BG}window$RESET preview
+	ctrl r   Reload list of windows
+
+	escape   Exit
 
 
-  Use the up/down keys to select, and then hit:
-
-	RETURN   Go to ${UNDERLINE}selected window$RESET or run ${BLUE}action$RESET
-
-	CTRL-n   New window, named with the search text
-	CTRL-\   Rename ${UNDERLINE}selected window$RESET 
-	DELETE   Delete ${UNDERLINE}selected window$RESET
-
-	CTRL-o   Cut ${UNDERLINE}selected window$RESET 
-	CTRL-p   Paste ${RED}cut window$RESET
-	CTRL-g   Grab ${UNDERLINE}selected window$RESET and pull it next to ${ORANGE}active window$RESET 
-	CTRL-t   Throw ${ORANGE}active window$RESET next to ${UNDERLINE}selected window$RESET
-
-	CTRL-l   Clear search text and reset
-	CTRL-w   Wipe last word of search text
-
-	CTRL-r   Reload list of windows $GREY(use if renames/deletes don't show)$RESET
-	CTRL-f   Refresh the overview of panes
-
-	ESCAPE   Exit
-
-
-  ${GREEN}Press CTRL-w (or backspace) to leave this screen
+    ${GREEN}ctrl-w (or backspace) to leave this screen
 "
 # tab         Select next pane
 # shift-tab   Mark selected pane
