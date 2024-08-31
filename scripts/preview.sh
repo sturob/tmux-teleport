@@ -3,7 +3,8 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/_colors.sh"
 
-LC_CTYPE=C # workaround for "sed: RE error: illegal byte sequence" error on macOS
+# LC_CTYPE=C
+LANG=C # workaround for "sed: RE error: illegal byte sequence" error on macOS
 
 __help="$GREY                                    ▗▄▖
   ▐▌                       ▐▌       ▝▜▌                       ▐▌
@@ -12,7 +13,7 @@ __help="$GREY                                    ▗▄▖
   ▐▌  ▐▌█▐▌▐▌ ▐▌ ▗█▖  ██▌  ▐▌  ▐▛▀▀▘ ▐▌  ▐▛▀▀▘▐▌ ▐▌▐▌ ▐▌ █    ▐▌
   ▐▙▄ ▐▌█▐▌▐▙▄█▌ ▟▀▙       ▐▙▄ ▝█▄▄▌ ▐▙▄ ▝█▄▄▌▐█▄█▘▝█▄█▘ █    ▐▙▄
    ▀▀ ▝▘▀▝▘ ▀▀▝▘▝▀ ▀▘       ▀▀  ▝▀▀   ▀▀  ▝▀▀ ▐▌▀▘  ▝▀▘  ▀     ▀▀
-       v0.3.3                                 ▐▌
+       v0.3.4                                 ▐▌
 $RESET
 
 	return   Go to ${GREY_BG}window$RESET or run ${BLUE}action$RESET
