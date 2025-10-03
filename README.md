@@ -34,6 +34,8 @@ A better way to manage tmux windows and sessions.
 
 ## Key bindings
 
+*ALT /* to activate, then:
+
 	  RETURN   Go to selected window or run action
 	
 	  CTRL-n   New window, named with the search text
