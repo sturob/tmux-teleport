@@ -29,7 +29,7 @@ A better way to manage tmux windows and sessions.
 
 <kbd>ALT + /</kbd> to activate, then:
 
-	  RETURN   Go to selected window or run action
+	  RETURN   Go to selected window
 	
 	  CTRL-n   New window, named with the search text
 	  CTRL-\   Rename selected window
