@@ -24,17 +24,10 @@ A better way to manage tmux windows and sessions.
 - Promote naming but support unnamed windows and sessions
 
 
-## Dependencies
-
-- bash
-- [tmux](https://github.com/tmux/tmux)
-- [fzf](https://github.com/junegunn/fzf)
-- pstree (if you want detailed pane process information)
-- awk + sed
 
 ## Key bindings
 
-*ALT /* to activate, then:
+**ALT /** to activate, then:
 
 	  RETURN   Go to selected window or run action
 	
@@ -82,6 +75,13 @@ Add this line to the bottom of `.tmux.conf`:
 Reload TMUX environment with: `$ tmux source-file ~/.tmux.conf`.
 You should now be able to use the plugin.
 
+
+## Dependencies
+
+- bash
+- [fzf](https://github.com/junegunn/fzf)
+- pstree (if you want detailed pane process information)
+- awk + sed
 
 ## How it works
 
