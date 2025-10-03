@@ -16,7 +16,7 @@ A better way to manage tmux windows and sessions.
 
 ## Objectives
 
-- One hotkey + zero config needed
+- One hotkey <kbd>ALT + /</kbd> + zero config needed
 - Promote muscle-memory + maximize flow
 - Informationally rich but not overwhelming
 - Easy to learn, discoverable functionality where possible
