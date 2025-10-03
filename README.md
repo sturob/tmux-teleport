@@ -27,7 +27,7 @@ A better way to manage tmux windows and sessions.
 
 ## Key bindings
 
-**ALT /** to activate, then:
+<kbd>ALT + /</kbd> to activate, then:
 
 	  RETURN   Go to selected window or run action
 	
