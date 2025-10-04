@@ -29,24 +29,26 @@ A better way to manage tmux windows and sessions.
 
 <kbd>ALT + /</kbd> to activate, then:
 
-	  RETURN   Go to selected window
-	
-	  CTRL-n   New window, named with the search text
-	  CTRL-\   Rename selected window
-	  DELETE   Delete selected window
-	
-	  CTRL-o   Cut selected window
-	  CTRL-p   Paste cut window
-	  CTRL-g   Grab selected window and pull it next to active window
-	  CTRL-t   Throw active window next to selected window
-	
-	  CTRL-l   Clear search text and reset
-	  CTRL-w   Wipe search text
-	
-	  CTRL-r   Reload list of windows (use if renames don't show)
-	  CTRL-f   Refresh the overview of panes
-	
-	  ESCAPE   Exit
+| <!-- -->    | <!-- -->    |
+|-------------|-------------|
+| <kbd>RETURN</kbd>   |    Go to selected window |
+|	                  |                          |
+| <kbd>CTRL + n</kbd> |    New window, named with the search text |
+| <kbd>CTRL + \</kbd> |    Rename selected window |
+| <kbd>DELETE</kbd>   |    Delete selected window |
+|	                  | |
+| <kbd>CTRL + o</kbd> |    Cut selected window |
+| <kbd>CTRL + p</kbd> |    Paste cut window |
+| <kbd>CTRL + g</kbd> |    Grab selected window and pull it next to active window |
+| <kbd>CTRL + t</kbd> |    Throw active window next to selected window |
+|	                  | |
+| <kbd>CTRL + l</kbd> |    Clear search text and reset |
+| <kbd>CTRL + w</kbd> |    Wipe search text |
+|	                  | |
+| <kbd>CTRL + r</kbd> |    Reload list of windows (use if renames don't show) |
+| <kbd>CTRL + f</kbd> |    Refresh the overview of panes |
+|	                  | |
+| <kbd>ESCAPE</kbd>   |    Exit |
 
 
 Most readline bindings (eg. CTRL-a/CTRL-e beginning/end of line) are also available.
