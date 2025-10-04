@@ -34,7 +34,7 @@ A better way to manage tmux windows and sessions.
 | <kbd>RETURN</kbd>   |    Go to selected window |
 |	                  |                          |
 | <kbd>CTRL + n</kbd> |    New window, named with the search text |
-| <kbd>CTRL + \</kbd> |    Rename selected window |
+| <kbd>CTRL + \\</kbd> |    Rename selected window |
 | <kbd>DELETE</kbd>   |    Delete selected window |
 |	                  | |
 | <kbd>CTRL + o</kbd> |    Cut selected window |
