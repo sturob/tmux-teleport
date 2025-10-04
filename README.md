@@ -32,22 +32,17 @@ A better way to manage tmux windows and sessions.
 | <!-- -->    | <!-- -->    |
 |-------------|-------------|
 | <kbd>RETURN</kbd>   |    Go to selected window |
-|	                  |                          |
 | <kbd>CTRL + n</kbd> |    New window, named with the search text |
 | <kbd>CTRL + \\</kbd> |    Rename selected window |
 | <kbd>DELETE</kbd>   |    Delete selected window |
-|	                  | |
 | <kbd>CTRL + o</kbd> |    Cut selected window |
 | <kbd>CTRL + p</kbd> |    Paste cut window |
 | <kbd>CTRL + g</kbd> |    Grab selected window and pull it next to active window |
 | <kbd>CTRL + t</kbd> |    Throw active window next to selected window |
-|	                  | |
 | <kbd>CTRL + l</kbd> |    Clear search text and reset |
 | <kbd>CTRL + w</kbd> |    Wipe search text |
-|	                  | |
 | <kbd>CTRL + r</kbd> |    Reload list of windows (use if renames don't show) |
 | <kbd>CTRL + f</kbd> |    Refresh the overview of panes |
-|	                  | |
 | <kbd>ESCAPE</kbd>   |    Exit |
 
 
